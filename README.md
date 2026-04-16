@@ -1,6 +1,7 @@
 # Neagari
 
 **Navigable Degeneracy in the Roots of 1-Bit Language Models**
+
 [![DOI](https://zenodo.org/badge/1209991674.svg)](https://doi.org/10.5281/zenodo.19615053)
 
 
