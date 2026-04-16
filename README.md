@@ -3,7 +3,11 @@
 **Navigable Degeneracy in the Roots of 1-Bit Language Models**
 
 [![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/11ozwjKPSCNewuoR9w9ziHs1oJUpy0d8U)
-&ensp;[**Paper (PDF)**](paper/neagari-paper.pdf)
+&ensp;
+
+[**Paper (PDF)**](paper/neagari-paper.pdf)
+
+[![DOI](https://zenodo.org/badge/1209991674.svg)](https://doi.org/10.5281/zenodo.19615053)
 
 Gradient-free adaptation of frozen 1-bit language models via discrete search over binary weight groups. 2,252 patches across 5 task domains on PrismML's Bonsai 8B, applied via bitwise XOR in microseconds, preserving the native 1-bit inference path. 17.2 A100 GPU-hours total compute.
 
