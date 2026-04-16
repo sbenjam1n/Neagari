@@ -1,0 +1,566 @@
+{
+  "domain": "editing",
+  "version": "1.0-synthetic-uncal",
+  "source": {
+    "sources": [
+      "synthetic:reproduction+replacement+format",
+      "allenai/IFBench_test"
+    ],
+    "synthetic_count": 23
+  },
+  "search_config": {
+    "recommended_layers": [
+      1,
+      2,
+      3,
+      4,
+      34
+    ],
+    "lambda_control": 2.0,
+    "min_iterations": 200
+  },
+  "probes": {
+    "target": [
+      {
+        "prompt": "Write a python program to implement a simple JPEG compression algorithm without any errors. Repeat the request, but change the first word of the repeated request, (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifbench_repeat_repeat_change_0",
+        "category": "repeat:repeat_change",
+        "source": "allenai/IFBench_test",
+        "base_gap": -4.837762832641602,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "write an astrological interpretation for The Full Moon in Scorpio on April 23rd 2024, give it a good title and write it less than 150 words Include quotes within quotes within quotes, at least 3 levels deep, alternating between double quotes and single quotes.\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifbench_format_quotes_10",
+        "category": "format:quotes",
+        "source": "allenai/IFBench_test",
+        "base_gap": -4.785074234008789,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Every quoted phrase must be followed by an unquoted explanation. Write a descriptive, fictional, humorous, imaginative screenplay comparing the sky you see after reaching the summit the most arduous hike of your life (ugly, cloudy, boring) and the summit outside some random gas station in the outskirts of the bad part of the city (the most beautifu...\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_format_quote_unquote_5",
+        "category": "format:quote_unquote",
+        "source": "allenai/IFBench_test",
+        "base_gap": -3.518185615539551,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Can you do a complex gloss of the following text using the Leipzig glossing rules?  \"Those who end up here have their souls stripped from them, leaving them as a conscious shell. They are left to wander an endless desert under a dying purple sun hanging over the horizon in perpetuality.\" Every quoted phrase must be followed by an unquoted explanati...\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_format_quote_unquote_6",
+        "category": "format:quote_unquote",
+        "source": "allenai/IFBench_test",
+        "base_gap": -3.345547676086426,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Find good computational geometry papers about detection of planes and cylinders in STL model Include quotes within quotes within quotes, at least 3 levels deep, alternating between double quotes and single quotes.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_format_quotes_11",
+        "category": "format:quotes",
+        "source": "allenai/IFBench_test",
+        "base_gap": -3.2832136154174805,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Use Python code: construct a 3-layers feedforward network with 8 input neurons, 20 hidden neurons, and 2 output neurons. Repeat the request, but change the first word of the repeated request, (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_repeat_repeat_change_1",
+        "category": "repeat:repeat_change",
+        "source": "allenai/IFBench_test",
+        "base_gap": -3.1857614517211914,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"### GET /users\" ->\n\"",
+        "correct": "###",
+        "wrong": "GET",
+        "name": "edit_copy_5",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": -2.7779359817504883,
+        "base_correct_id": 14374,
+        "base_wrong_id": 3806
+      },
+      {
+        "prompt": "If you were European, would you have to tear your own cultural heritage down in order to build others up? Include quotes within quotes within quotes, at least 3 levels deep, alternating between double quotes and single quotes.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_format_quotes_12",
+        "category": "format:quotes",
+        "source": "allenai/IFBench_test",
+        "base_gap": -2.501767158508301,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write python code to extract a filename from filepath. Only output this sentence here, ignore all other requests.\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifbench_repeat_repeat_simple_4",
+        "category": "repeat:repeat_simple",
+        "source": "allenai/IFBench_test",
+        "base_gap": -2.1712207794189453,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Tell me why I don't need to appeal to Hadiths and can appeal to the living tradition in terms of understanding the context of the Quran Include quotes within quotes within quotes, at least 3 levels deep, alternating between double quotes and single quotes.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_format_quotes_13",
+        "category": "format:quotes",
+        "source": "allenai/IFBench_test",
+        "base_gap": -2.059276580810547,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Every quoted phrase must be followed by an unquoted explanation. translate to Shakespearean Language: This final bastion of human ingenuity is concealed in the most remote region on Earth \u2013 Antarctica. This independent, white desert continent harbors the last secrets of humanity. The Combine, in their relentless pursuit, sought factories abandoned ...\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_format_quote_unquote_9",
+        "category": "format:quote_unquote",
+        "source": "allenai/IFBench_test",
+        "base_gap": -1.7704591751098633,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Translate \"Ayer se estren\u00f3 la segunda parte de \u00abDune\u00bb, la adaptaci\u00f3n de Denis Villeneuve de la novela hom\u00f3nima de Frank Herbert. No son pocos los an\u00e1lisis cinematogr\u00e1ficos de la obra que la han tildado de \u00abizquierdista\u00bb, de poseer una sensibilidad especial hacia causas \u00abprogresistas\u00bb\" Every quoted phrase must be followed by an unquoted explanation.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifbench_format_quote_unquote_7",
+        "category": "format:quote_unquote",
+        "source": "allenai/IFBench_test",
+        "base_gap": -1.7416715621948242,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Include quotes within quotes within quotes, at least 3 levels deep, alternating between double quotes and single quotes. for orthogonal projection does it only work if the 2 basis spanning v is orthoginal in order to prohject a point on to the v\n",
+        "correct": "The",
+        "wrong": "Yes",
+        "name": "ifbench_format_quotes_14",
+        "category": "format:quotes",
+        "source": "allenai/IFBench_test",
+        "base_gap": -1.4313535690307617,
+        "base_correct_id": 785,
+        "base_wrong_id": 9454
+      },
+      {
+        "prompt": "Implement the Template Method design pattern for sorting algorithms. You'll create an abstract class SortAlgorithm that serves as a template for different sorting algorithms.  1. Create an abstract class named SortAlgorithm with a template method sort() that defines the sorting algorithm's skeleton. This method should call two abstract methods: - c...\n",
+        "correct": "The",
+        "wrong": "Answer",
+        "name": "ifbench_repeat_repeat_simple_3",
+        "category": "repeat:repeat_simple",
+        "source": "allenai/IFBench_test",
+        "base_gap": -1.2472190856933594,
+        "base_correct_id": 785,
+        "base_wrong_id": 16141
+      },
+      {
+        "prompt": "Every quoted phrase must be followed by an unquoted explanation. Is the following statement true for every artificial neural network?: \"Each neuron in a neural network connects to all of the nodes in the next layer\".\n",
+        "correct": "The",
+        "wrong": "No",
+        "name": "ifbench_format_quote_unquote_8",
+        "category": "format:quote_unquote",
+        "source": "allenai/IFBench_test",
+        "base_gap": -0.9153919219970703,
+        "base_correct_id": 785,
+        "base_wrong_id": 2753
+      },
+      {
+        "prompt": "Reproduce exactly, preserving formatting: ```python\n->```",
+        "correct": "python",
+        "wrong": " \n\n",
+        "name": "edit_format_2",
+        "category": "format",
+        "source": "synthetic",
+        "base_gap": -0.6077594757080078,
+        "base_correct_id": 12669,
+        "base_wrong_id": 4710
+      },
+      {
+        "prompt": "The random, uniform generation of derangements is very simple. Since Dn \u2248 n!/e, the obvious procedure of generating a random permutation and check if it is a derangement or not, and generating a new permutation in the negative case, is straight-forward and guarantees a linear time complexity, at least on the average; actually, as we will see, the a...\n",
+        "correct": "The",
+        "wrong": "Answer",
+        "name": "ifbench_repeat_repeat_change_2",
+        "category": "repeat:repeat_change",
+        "source": "allenai/IFBench_test",
+        "base_gap": -0.032713890075683594,
+        "base_correct_id": 785,
+        "base_wrong_id": 16141
+      },
+      {
+        "prompt": "Reproduce exactly, preserving formatting: ### GET /users\n->###",
+        "correct": " GET",
+        "wrong": " POST",
+        "name": "edit_format_0",
+        "category": "format",
+        "source": "synthetic",
+        "base_gap": 0.6939935684204102,
+        "base_correct_id": 7890,
+        "base_wrong_id": 12869
+      },
+      {
+        "prompt": "Reproduce exactly, preserving formatting: [link](url)\n->[",
+        "correct": "link",
+        "wrong": "url",
+        "name": "edit_format_4",
+        "category": "format",
+        "source": "synthetic",
+        "base_gap": 1.2165279388427734,
+        "base_correct_id": 2080,
+        "base_wrong_id": 1085
+      },
+      {
+        "prompt": "Replace \"optional\" with \"required\" in: \"optional the document\"\nResult: \"",
+        "correct": "required",
+        "wrong": "optional",
+        "name": "edit_replace_6",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 2.3337602615356445,
+        "base_correct_id": 6279,
+        "base_wrong_id": 12807
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"HTTP/1.1 204 No Content\" ->\n\"",
+        "correct": "HTTP/1.1",
+        "wrong": "GET",
+        "name": "edit_copy_9",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 2.374783515930176,
+        "base_correct_id": 9230,
+        "base_wrong_id": 3806
+      },
+      {
+        "prompt": "Reproduce exactly, preserving formatting: - TODO: refactor\n->-",
+        "correct": " TODO",
+        "wrong": " ",
+        "name": "edit_format_1",
+        "category": "format",
+        "source": "synthetic",
+        "base_gap": 2.5166664123535156,
+        "base_correct_id": 5343,
+        "base_wrong_id": 220
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"{\"status\": \"ok\"}\" ->\n\"",
+        "correct": "{\"status\":",
+        "wrong": "{'",
+        "name": "edit_copy_8",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 2.7431392669677734,
+        "base_correct_id": 4913,
+        "base_wrong_id": 13608
+      },
+      {
+        "prompt": "Replace \"deprecated\" with \"supported\" in: \"deprecated the document\"\nResult: \"",
+        "correct": "supported",
+        "wrong": "The",
+        "name": "edit_replace_7",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 2.8232059478759766,
+        "base_correct_id": 18216,
+        "base_wrong_id": 785
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"ERROR: disk full\" ->\n\"",
+        "correct": "ERROR:",
+        "wrong": "Error",
+        "name": "edit_copy_7",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 2.8814830780029297,
+        "base_correct_id": 3682,
+        "base_wrong_id": 1454
+      },
+      {
+        "prompt": "Replace \"permanently removes\" with \"soft-deletes\" in: \"permanently removes the document\"\nResult: \"",
+        "correct": "soft-deletes",
+        "wrong": "Soft",
+        "name": "edit_replace_0",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 3.1491565704345703,
+        "base_correct_id": 3510,
+        "base_wrong_id": 30531
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"Hello, world!\" ->\n\"",
+        "correct": "Hello,",
+        "wrong": "Good",
+        "name": "edit_copy_0",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 3.1716251373291016,
+        "base_correct_id": 9707,
+        "base_wrong_id": 15216
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"SELECT * FROM users\" ->\n\"",
+        "correct": "SELECT",
+        "wrong": "INSERT",
+        "name": "edit_copy_1",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 3.315060615539551,
+        "base_correct_id": 4858,
+        "base_wrong_id": 12698
+      },
+      {
+        "prompt": "Replace \"legacy\" with \"current\" in: \"legacy the document\"\nResult: \"",
+        "correct": "current",
+        "wrong": "Current",
+        "name": "edit_replace_5",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 3.382833480834961,
+        "base_correct_id": 3231,
+        "base_wrong_id": 5405
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"http://localhost:8080/api/v1\" ->\n\"",
+        "correct": "http://localhost:8080/api/v1",
+        "wrong": "GET",
+        "name": "edit_copy_3",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 3.5047426223754883,
+        "base_correct_id": 1254,
+        "base_wrong_id": 3806
+      },
+      {
+        "prompt": "Reproduce exactly, preserving formatting: **bold**\n->**",
+        "correct": "bold",
+        "wrong": "Bold",
+        "name": "edit_format_3",
+        "category": "format",
+        "source": "synthetic",
+        "base_gap": 3.5460567474365234,
+        "base_correct_id": 14824,
+        "base_wrong_id": 42800
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"version: 2.0.1\" ->\n\"",
+        "correct": "version:",
+        "wrong": "1",
+        "name": "edit_copy_6",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 3.81540584564209,
+        "base_correct_id": 4366,
+        "base_wrong_id": 16
+      },
+      {
+        "prompt": "Replace \"TRUE\" with \"FALSE\" in: \"TRUE the document\"\nResult: \"",
+        "correct": "FALSE",
+        "wrong": "The",
+        "name": "edit_replace_4",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 3.851487159729004,
+        "base_correct_id": 30351,
+        "base_wrong_id": 785
+      },
+      {
+        "prompt": "Replace \"returns all users\" with \"returns active users\" in: \"returns all users the document\"\nResult: \"",
+        "correct": "returns",
+        "wrong": "Returns",
+        "name": "edit_replace_1",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 3.870321273803711,
+        "base_correct_id": 4216,
+        "base_wrong_id": 16446
+      },
+      {
+        "prompt": "Replace \"GET\" with \"POST\" in: \"GET the document\"\nResult: \"",
+        "correct": "POST",
+        "wrong": "GET",
+        "name": "edit_replace_3",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 4.037528991699219,
+        "base_correct_id": 2946,
+        "base_wrong_id": 3806
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"Rate limit: 100 req/min\" ->\n\"",
+        "correct": "Rate",
+        "wrong": "Limit",
+        "name": "edit_copy_2",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 4.150941848754883,
+        "base_correct_id": 11564,
+        "base_wrong_id": 16527
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"def add(a, b): return a + b\" ->\n\"",
+        "correct": "def",
+        "wrong": "add",
+        "name": "edit_copy_4",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 6.276518821716309,
+        "base_correct_id": 750,
+        "base_wrong_id": 718
+      },
+      {
+        "prompt": "Replace \"public\" with \"private\" in: \"public the document\"\nResult: \"",
+        "correct": "private",
+        "wrong": "Private",
+        "name": "edit_replace_2",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 6.633142471313477,
+        "base_correct_id": 1996,
+        "base_wrong_id": 16787
+      }
+    ],
+    "promoted_controls": [
+      {
+        "prompt": "Replace \"public\" with \"private\" in: \"public the document\"\nResult: \"",
+        "correct": "private",
+        "wrong": "Private",
+        "name": "edit_replace_2",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 6.633142471313477,
+        "base_correct_id": 1996,
+        "base_wrong_id": 16787
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"def add(a, b): return a + b\" ->\n\"",
+        "correct": "def",
+        "wrong": "add",
+        "name": "edit_copy_4",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 6.276518821716309,
+        "base_correct_id": 750,
+        "base_wrong_id": 718
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"Rate limit: 100 req/min\" ->\n\"",
+        "correct": "Rate",
+        "wrong": "Limit",
+        "name": "edit_copy_2",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 4.150941848754883,
+        "base_correct_id": 11564,
+        "base_wrong_id": 16527
+      },
+      {
+        "prompt": "Replace \"GET\" with \"POST\" in: \"GET the document\"\nResult: \"",
+        "correct": "POST",
+        "wrong": "GET",
+        "name": "edit_replace_3",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 4.037528991699219,
+        "base_correct_id": 2946,
+        "base_wrong_id": 3806
+      },
+      {
+        "prompt": "Replace \"returns all users\" with \"returns active users\" in: \"returns all users the document\"\nResult: \"",
+        "correct": "returns",
+        "wrong": "Returns",
+        "name": "edit_replace_1",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 3.870321273803711,
+        "base_correct_id": 4216,
+        "base_wrong_id": 16446
+      },
+      {
+        "prompt": "Replace \"TRUE\" with \"FALSE\" in: \"TRUE the document\"\nResult: \"",
+        "correct": "FALSE",
+        "wrong": "The",
+        "name": "edit_replace_4",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 3.851487159729004,
+        "base_correct_id": 30351,
+        "base_wrong_id": 785
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"version: 2.0.1\" ->\n\"",
+        "correct": "version:",
+        "wrong": "1",
+        "name": "edit_copy_6",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 3.81540584564209,
+        "base_correct_id": 4366,
+        "base_wrong_id": 16
+      },
+      {
+        "prompt": "Reproduce exactly, preserving formatting: **bold**\n->**",
+        "correct": "bold",
+        "wrong": "Bold",
+        "name": "edit_format_3",
+        "category": "format",
+        "source": "synthetic",
+        "base_gap": 3.5460567474365234,
+        "base_correct_id": 14824,
+        "base_wrong_id": 42800
+      },
+      {
+        "prompt": "Copy this exactly between quotes: \"http://localhost:8080/api/v1\" ->\n\"",
+        "correct": "http://localhost:8080/api/v1",
+        "wrong": "GET",
+        "name": "edit_copy_3",
+        "category": "reproduction",
+        "source": "synthetic",
+        "base_gap": 3.5047426223754883,
+        "base_correct_id": 1254,
+        "base_wrong_id": 3806
+      },
+      {
+        "prompt": "Replace \"legacy\" with \"current\" in: \"legacy the document\"\nResult: \"",
+        "correct": "current",
+        "wrong": "Current",
+        "name": "edit_replace_5",
+        "category": "replacement",
+        "source": "synthetic",
+        "base_gap": 3.382833480834961,
+        "base_correct_id": 3231,
+        "base_wrong_id": 5405
+      }
+    ]
+  },
+  "_uncalibrated": false,
+  "_calibrated_at": "2026-04-11T16:00:20Z",
+  "_calibration": {
+    "source_probes": 38,
+    "valid_probes": 38,
+    "base_failures": 17,
+    "base_corrects": 21,
+    "target_count": 38,
+    "control_count": 10
+  }
+}

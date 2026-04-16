@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models (large binary files — download separately)
+*.gguf
+*.bin
+*.safetensors
+
+# Results and logs (reproduce locally)
+results/
+*.log
+*.aux
+*.out
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

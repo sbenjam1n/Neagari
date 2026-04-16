@@ -1,0 +1,70 @@
+{
+  "steps": [
+    {
+      "domain": "editing",
+      "probe_file": "./v2_calibrated/probes_editing.json",
+      "patch_file": "./v2_patches/patch_editing.json",
+      "flips": 469,
+      "final_fitness": 0.07922292097903896,
+      "lambda": 1.5,
+      "iterations_run": 1000,
+      "controls_after": 30
+    },
+    {
+      "domain": "instruction",
+      "probe_file": "./v2_calibrated/probes_instruction.json",
+      "patch_file": "./v2_patches/patch_instruction.json",
+      "flips": 414,
+      "final_fitness": 0.044409831932612824,
+      "lambda": 1.0,
+      "iterations_run": 1000,
+      "controls_after": 30
+    },
+    {
+      "domain": "tool_calling",
+      "probe_file": "./v2_calibrated/probes_tool_calling.json",
+      "patch_file": "./v2_patches/patch_tool_calling.json",
+      "flips": 233,
+      "final_fitness": 0.04832687191665172,
+      "lambda": 1.0,
+      "iterations_run": 500,
+      "controls_after": 30
+    },
+    {
+      "domain": "math",
+      "probe_file": "./v2_calibrated/probes_math_math500.json",
+      "patch_file": "./v2_patches/patch_math.json",
+      "flips": 54,
+      "final_fitness": 0.006616997718811035,
+      "lambda": 2.0,
+      "iterations_run": 200,
+      "controls_after": 30
+    },
+    {
+      "domain": "coding",
+      "probe_file": "./v2_calibrated/probes_coding.json",
+      "patch_file": "./v2_patches/patch_coding.json",
+      "flips": 68,
+      "final_fitness": 0.005206379294395447,
+      "lambda": 0.75,
+      "iterations_run": 200,
+      "controls_after": 30
+    }
+  ],
+  "search_layers": [
+    1,
+    2,
+    3,
+    4,
+    34
+  ],
+  "probes_dir": "./v2_calibrated",
+  "max_controls": 30,
+  "pipeline_order": [
+    "editing",
+    "instruction",
+    "tool_calling",
+    "math",
+    "coding"
+  ]
+}

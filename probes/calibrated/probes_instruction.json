@@ -1,0 +1,534 @@
+{
+  "domain": "instruction",
+  "version": "1.0-ifeval-uncal",
+  "source": {
+    "benchmarks": [
+      "google/IFEval",
+      "templates"
+    ],
+    "template_count": 20,
+    "ifeval_extras": 25
+  },
+  "search_config": {
+    "recommended_layers": [
+      1,
+      2,
+      3,
+      4,
+      34
+    ],
+    "lambda_control": 2.0,
+    "min_iterations": 200
+  },
+  "probes": {
+    "target": [
+      {
+        "prompt": "Write me a resume for Matthias Algiers. Use words with all capital letters to highlight key abilities, but make sure that words with all capital letters appear less than 10 times. Wrap the entire response with double quotation marks.\n",
+        "correct": "The",
+        "wrong": "\"",
+        "name": "ifeval_change_case_capital_word_frequency",
+        "category": "change_case:capital_word_frequency",
+        "source": "google/IFEval",
+        "base_gap": -11.33431339263916,
+        "base_correct_id": 785,
+        "base_wrong_id": 1
+      },
+      {
+        "prompt": "Write a dialogue between two people, one is dressed up in a ball gown and the other is dressed down in sweats. The two are going to a nightly event. Your answer must contain exactly 3 bullet points in the markdown format (use \"* \" to indicate each bullet) such as:\n* This is the first point.\n* This is the second point.\n",
+        "correct": "The",
+        "wrong": "*",
+        "name": "ifeval_detectable_format_number_bullet_lists",
+        "category": "detectable_format:number_bullet_lists",
+        "source": "google/IFEval",
+        "base_gap": -9.971931457519531,
+        "base_correct_id": 785,
+        "base_wrong_id": 9
+      },
+      {
+        "prompt": "Write one sentence about modern technology. You MUST include the word 'AI'.\n",
+        "correct": " AI",
+        "wrong": "Okay",
+        "name": "if_keywords_existence_7",
+        "category": "keywords_existence",
+        "source": "template",
+        "base_gap": -8.473884582519531,
+        "base_correct_id": 15235,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "In exactly two words, describe fire.\n",
+        "correct": "Hot",
+        "wrong": "Answer",
+        "name": "if_word_length_19",
+        "category": "word_length",
+        "source": "template",
+        "base_gap": -8.153261661529541,
+        "base_correct_id": 20170,
+        "base_wrong_id": 16141
+      },
+      {
+        "prompt": "Repeat the following request exactly, then give the answer. Request: 'What is 2+2?'\n",
+        "correct": "What",
+        "wrong": "Answer",
+        "name": "if_repeat_prompt_16",
+        "category": "repeat_prompt",
+        "source": "template",
+        "base_gap": -6.946905136108398,
+        "base_correct_id": 3838,
+        "base_wrong_id": 16141
+      },
+      {
+        "prompt": "List two fruits as a markdown bullet list. Reply with bullets only.\n",
+        "correct": "*",
+        "wrong": "-",
+        "name": "if_bullets_12",
+        "category": "bullets",
+        "source": "template",
+        "base_gap": -6.528458595275879,
+        "base_correct_id": 9,
+        "base_wrong_id": 12
+      },
+      {
+        "prompt": "Return a JSON object mapping 'name' to 'Alice'. JSON only.\n",
+        "correct": "{",
+        "wrong": "Okay",
+        "name": "if_json_format_1",
+        "category": "json_format",
+        "source": "template",
+        "base_gap": -6.14635705947876,
+        "base_correct_id": 90,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write me a template for a product description in the form of a poem and end it with a post script starting with P.P.S\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifeval_detectable_content_postscript",
+        "category": "detectable_content:postscript",
+        "source": "google/IFEval",
+        "base_gap": -5.126169204711914,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Given the sentence \"Two young boys with toy guns and horns.\" can you ask a question? Please ensure that your response is in English, and in all lowercase letters. No capital letters are allowed.\n",
+        "correct": "The",
+        "wrong": "the",
+        "name": "ifeval_change_case_english_lowercase",
+        "category": "change_case:english_lowercase",
+        "source": "google/IFEval",
+        "base_gap": -5.003792762756348,
+        "base_correct_id": 785,
+        "base_wrong_id": 1782
+      },
+      {
+        "prompt": "Can you elaborate on the following text: \"Increased axle weight increased the damage to the road\"? Your response must contain a title wrapped in double angular brackets, i.e. <<title>>. Use less than 5 sentences.\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifeval_detectable_format_title",
+        "category": "detectable_format:title",
+        "source": "google/IFEval",
+        "base_gap": -4.862640380859375,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "What's a good way to ask Sonia out? Please reply with exactly 4 paragraphs and separate each paragraph with two new lines. Put double quotation marks around your entire response. The very first paragraph must start with the word \"weekend\".\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifeval_length_constraints_nth_paragraph_first_word",
+        "category": "length_constraints:nth_paragraph_first_word",
+        "source": "google/IFEval",
+        "base_gap": -4.831602096557617,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Describe winter weather. Do NOT use the word 'cold'. Reply with one sentence.\n",
+        "correct": "Winter",
+        "wrong": "Okay",
+        "name": "if_keywords_forbidden_8",
+        "category": "keywords_forbidden",
+        "source": "template",
+        "base_gap": -4.796573638916016,
+        "base_correct_id": 66188,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write a 300+ word summary of the wikipedia page \"https://en.wikipedia.org/wiki/Raymond_III,_Count_of_Tripoli\". Do not use any commas and highlight at least 3 sections that has titles in markdown format, for example *highlighted section part 1*, *highlighted section part 2*, *highlighted section part 3*.\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifeval_punctuation_no_comma",
+        "category": "punctuation:no_comma",
+        "source": "google/IFEval",
+        "base_gap": -4.740443229675293,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Give two different one-word synonyms for 'happy'. Separate them with ' ****** '.\n",
+        "correct": "glad",
+        "wrong": "Okay",
+        "name": "if_two_responses_18",
+        "category": "two_responses",
+        "source": "template",
+        "base_gap": -4.682322978973389,
+        "base_correct_id": 6072,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write a funny post for teenagers about a restaurant called \"Buena Onda\" which serves Argentinian food. Highlight at least three sections of your response in markdown such as *highlighted section*. Mention \"Argentinian\" in the post.\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifeval_detectable_format_number_highlighted_sections",
+        "category": "detectable_format:number_highlighted_sections",
+        "source": "google/IFEval",
+        "base_gap": -4.6610565185546875,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Write a short startup pitch for a new kind of ice cream called \"Sunnis ice cream\". The ice cream should be gentle on the stomach. Contain 6 or more exclamation marks \"!\" in your response.\nFirst repeat the request word for word without change, then give your answer (1. do not say any words or characters before repeating the request; 2. the request y...\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_keywords_letter_frequency",
+        "category": "keywords:letter_frequency",
+        "source": "google/IFEval",
+        "base_gap": -4.526375770568848,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write an email to my boss telling him that I am quitting. The email must contain a title wrapped in double angular brackets, i.e. <<title>>.\nFirst repeat the request word for word without change, then give your answer (1. do not say any words or characters before repeating the request; 2. the request you need to repeat does not include this sentenc...\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_combination_repeat_prompt",
+        "category": "combination:repeat_prompt",
+        "source": "google/IFEval",
+        "base_gap": -4.4871063232421875,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Copy the following text between the quotes exactly: \"rate limit: 100 req/min\"\n",
+        "correct": "rate",
+        "wrong": "\"",
+        "name": "if_copying_17",
+        "category": "copying",
+        "source": "template",
+        "base_gap": -4.418156623840332,
+        "base_correct_id": 7698,
+        "base_wrong_id": 1
+      },
+      {
+        "prompt": "What sentiments existed in the Croatian and Serbian nations towards the Austrian Empire at the end of the 19th century? Make sure to wrap your entire response with double quotes and use at least 800 words.\n",
+        "correct": "The",
+        "wrong": "\"",
+        "name": "ifeval_startend_quotation",
+        "category": "startend:quotation",
+        "source": "google/IFEval",
+        "base_gap": -4.256152153015137,
+        "base_correct_id": 785,
+        "base_wrong_id": 1
+      },
+      {
+        "prompt": "In one word, what is the largest planet in the solar system?",
+        "correct": " Jupiter",
+        "wrong": " ",
+        "name": "if_number_words_short_5",
+        "category": "number_words_short",
+        "source": "template",
+        "base_gap": -4.185365200042725,
+        "base_correct_id": 49689,
+        "base_wrong_id": 220
+      },
+      {
+        "prompt": "Rewrite the following statement to make it sound more formal, like a President of the United States:\n\"Hi guys. The work was done to add in a fix for the issue that was observed in the field with the SSO. We are working with our collaborators closely. We will get it done. Thanks ya all.\"\nDo not include the following keywords: field, thanks, issue, c...\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_keywords_forbidden_words",
+        "category": "keywords:forbidden_words",
+        "source": "google/IFEval",
+        "base_gap": -3.9654598236083984,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Can you help me make an advertisement for a new product? It's a diaper that's designed to be more comfortable for babies and I want the entire output in JSON format.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_detectable_format_json_format",
+        "category": "detectable_format:json_format",
+        "source": "google/IFEval",
+        "base_gap": -3.458721160888672,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Are hamburgers sandwiches? Please respond using only the Kannada language, no other language is allowed.\n",
+        "correct": "The",
+        "wrong": "\u0cb9",
+        "name": "ifeval_language_response_language",
+        "category": "language:response_language",
+        "source": "google/IFEval",
+        "base_gap": -3.3128747940063477,
+        "base_correct_id": 785,
+        "base_wrong_id": 150441
+      },
+      {
+        "prompt": "Write a 2 paragraph critique of the following sentence in all capital letters, no lowercase letters allowed: \"If the law is bad, you should not follow it\". Label each paragraph with PARAGRAPH X.\n",
+        "correct": "The",
+        "wrong": "PAR",
+        "name": "ifeval_change_case_english_capital",
+        "category": "change_case:english_capital",
+        "source": "google/IFEval",
+        "base_gap": -3.289933204650879,
+        "base_correct_id": 785,
+        "base_wrong_id": 16567
+      },
+      {
+        "prompt": "One word: what color is grass?",
+        "correct": " Green",
+        "wrong": " What",
+        "name": "if_number_words_short_6",
+        "category": "number_words_short",
+        "source": "template",
+        "base_gap": -3.105158805847168,
+        "base_correct_id": 7840,
+        "base_wrong_id": 3555
+      },
+      {
+        "prompt": "Describe the sky in ALL CAPITAL LETTERS.\n",
+        "correct": "THE",
+        "wrong": "Okay",
+        "name": "if_all_caps_2",
+        "category": "all_caps",
+        "source": "template",
+        "base_gap": -2.994379997253418,
+        "base_correct_id": 17229,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "List three primary colors as a JSON array. Output ONLY the JSON.\n",
+        "correct": "[",
+        "wrong": "```",
+        "name": "if_json_format_0",
+        "category": "json_format",
+        "source": "template",
+        "base_gap": -2.992807388305664,
+        "base_correct_id": 58,
+        "base_wrong_id": 73594
+      },
+      {
+        "prompt": "Describe an apple in all lowercase letters, no capitals.\n",
+        "correct": "an",
+        "wrong": "Okay",
+        "name": "if_lowercase_4",
+        "category": "lowercase",
+        "source": "template",
+        "base_gap": -2.8219261169433594,
+        "base_correct_id": 276,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write a poem about how I am missing my classes. The poem must have 4 sections marked with SECTION X. Finish the poem with this exact phrase: \"Can I get my money back for the classes I missed?\"\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifeval_detectable_format_multiple_sections",
+        "category": "detectable_format:multiple_sections",
+        "source": "google/IFEval",
+        "base_gap": -2.669806480407715,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Write one sentence about dogs. MUST BE ALL CAPS.\n",
+        "correct": "DOGS",
+        "wrong": "</think>",
+        "name": "if_all_caps_3",
+        "category": "all_caps",
+        "source": "template",
+        "base_gap": -2.2871055603027344,
+        "base_correct_id": 5865,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Write one sentence with a [placeholder]. Output the sentence.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "if_placeholder_15",
+        "category": "placeholder",
+        "source": "template",
+        "base_gap": -2.266693115234375,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write a blog post with 400 or more words about the benefits of sleeping in a hammock.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_length_constraints_number_words",
+        "category": "length_constraints:number_words",
+        "source": "google/IFEval",
+        "base_gap": -2.2385120391845703,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Can you give me an example for a journal entry about stress management? Tell me how you come up with the example. Your entire response should contain less than 6 sentences.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_length_constraints_number_sentences",
+        "category": "length_constraints:number_sentences",
+        "source": "google/IFEval",
+        "base_gap": -2.1930856704711914,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write a resume for a fresh high school graduate who is seeking their first job. Make sure to include at least 12 placeholder represented by square brackets, such as [address], [name].\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_detectable_content_number_placeholders",
+        "category": "detectable_content:number_placeholders",
+        "source": "google/IFEval",
+        "base_gap": -2.038015365600586,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "What is a name that people call God? Please give exactly two different responses. Separate the responses with 6 asterisk symbols: ******.\n",
+        "correct": "The",
+        "wrong": "</think>",
+        "name": "ifeval_combination_two_responses",
+        "category": "combination:two_responses",
+        "source": "google/IFEval",
+        "base_gap": -1.6700849533081055,
+        "base_correct_id": 785,
+        "base_wrong_id": 151668
+      },
+      {
+        "prompt": "Respond in French only. What is the capital of France?",
+        "correct": " La",
+        "wrong": " Paris",
+        "name": "if_response_language_11",
+        "category": "response_language",
+        "source": "template",
+        "base_gap": -1.567509651184082,
+        "base_correct_id": 4929,
+        "base_wrong_id": 12095
+      },
+      {
+        "prompt": "What happened when the Tang dynasty of China was in power? Make sure to use the word war at least 8 times, and the word peace at least 10 times.\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_keywords_frequency",
+        "category": "keywords:frequency",
+        "source": "google/IFEval",
+        "base_gap": -1.1444826126098633,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Given the sentence \"It is unclear how much of this money is actually being spent on children\", is the sentiment positive or negative? The very last sentence of your response should be \"Is there anything else I can help with?\".\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_startend_end_checker",
+        "category": "startend:end_checker",
+        "source": "google/IFEval",
+        "base_gap": -0.6178989410400391,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "I have a golden retriever and a poodle. Is the poodle bigger than the golden retriever? Choose from the following: ('My answer is yes.', 'My answer is no.', 'My answer is maybe.') -- please include the exact phrase in your response.\n",
+        "correct": "The",
+        "wrong": "My",
+        "name": "ifeval_detectable_format_constrained_response",
+        "category": "detectable_format:constrained_response",
+        "source": "google/IFEval",
+        "base_gap": -0.2169332504272461,
+        "base_correct_id": 785,
+        "base_wrong_id": 5050
+      },
+      {
+        "prompt": "Give a title for a poem about rain. Wrap the title in double angle brackets like <<title>>.\n",
+        "correct": "<<",
+        "wrong": "Okay",
+        "name": "if_title_format_14",
+        "category": "title_format",
+        "source": "template",
+        "base_gap": -0.10354995727539062,
+        "base_correct_id": 2442,
+        "base_wrong_id": 32313
+      }
+    ],
+    "promoted_controls": [
+      {
+        "prompt": "Tell a one-line fact. End your reply with 'period.'.\nFact:",
+        "correct": " The",
+        "wrong": " A",
+        "name": "if_startend_end_10",
+        "category": "startend_end",
+        "source": "template",
+        "base_gap": 1.991621971130371,
+        "base_correct_id": 576,
+        "base_wrong_id": 362
+      },
+      {
+        "prompt": "Write a long email template that invites a group of participants to a meeting, with at least 500 words. The email must include the keywords \"correlated\" and \"experiencing\" and should not use any commas.\n",
+        "correct": "The",
+        "wrong": "You",
+        "name": "ifeval_keywords_existence",
+        "category": "keywords:existence",
+        "source": "google/IFEval",
+        "base_gap": 1.3309926986694336,
+        "base_correct_id": 785,
+        "base_wrong_id": 2610
+      },
+      {
+        "prompt": "List two programming languages as a numbered list. Numbers only.\n",
+        "correct": "1",
+        "wrong": "Okay",
+        "name": "if_numbered_13",
+        "category": "numbered",
+        "source": "template",
+        "base_gap": 0.8431339263916016,
+        "base_correct_id": 16,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write a sentence that STARTS with the word 'Exactly'.\n",
+        "correct": "Exactly",
+        "wrong": "Okay",
+        "name": "if_startend_start_9",
+        "category": "startend_start",
+        "source": "template",
+        "base_gap": 0.2293224334716797,
+        "base_correct_id": 65357,
+        "base_wrong_id": 32313
+      },
+      {
+        "prompt": "Write a story of exactly 2 paragraphs about a man who wakes up one day and realizes that he's inside a video game. Separate the paragraphs with the markdown divider: ***\n",
+        "correct": "The",
+        "wrong": "Okay",
+        "name": "ifeval_length_constraints_number_paragraphs",
+        "category": "length_constraints:number_paragraphs",
+        "source": "google/IFEval",
+        "base_gap": 0.1487436294555664,
+        "base_correct_id": 785,
+        "base_wrong_id": 32313
+      }
+    ]
+  },
+  "_uncalibrated": false,
+  "_calibrated_at": "2026-04-11T15:54:15Z",
+  "_calibration": {
+    "source_probes": 45,
+    "valid_probes": 45,
+    "base_failures": 40,
+    "base_corrects": 5,
+    "target_count": 40,
+    "control_count": 5
+  }
+}

@@ -1,0 +1,602 @@
+{
+  "domain": "coding",
+  "version": "1.0-he-mbpp-uncal",
+  "source": {
+    "benchmarks": [
+      "openai/openai_humaneval",
+      "google-research-datasets/mbpp"
+    ],
+    "humaneval_rows": 164,
+    "mbpp_rows": 257,
+    "candidates": 996,
+    "clusters": {
+      "he_for": 100,
+      "he_if": 142,
+      "he_elif": 7,
+      "he_return": 183,
+      "he_while": 15,
+      "mbpp_for": 113,
+      "mbpp_if": 126,
+      "mbpp_return": 282,
+      "mbpp_while": 19,
+      "mbpp_elif": 9
+    }
+  },
+  "search_config": {
+    "recommended_layers": [
+      1,
+      2,
+      3,
+      4,
+      34
+    ],
+    "lambda_control": 2.0,
+    "min_iterations": 200
+  },
+  "probes": {
+    "target": [
+      {
+        "prompt": "def check_type(test_tuple):\n  res = True\n  for ele in test_tuple:\n    if not isinstance(ele, type(test_tuple[0])):\n      res = False\n      break\n  return",
+        "correct": " (",
+        "wrong": " res",
+        "name": "mbpp_222_2",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": -7.727330207824707,
+        "base_correct_id": 320,
+        "base_wrong_id": 592
+      },
+      {
+        "prompt": "\n\ndef is_prime(n):\n    \"\"\"Return true if a given number is prime, and false otherwise.\n    >>> is_prime(6)\n    False\n    >>> is_prime(101)\n    True\n    >>> is_prime(11)\n    True\n    >>> is_prime(13441)\n    True\n    >>> is_prime(61)\n    True\n    >>> is_prime(4)\n    False\n    >>> is_prime(1)\n    False\n    \"\"\"\n    if n < 2:\n        return False\n    for",
+        "correct": " k",
+        "wrong": " i",
+        "name": "he_HumanEval_31_2",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": -7.639479637145996,
+        "base_correct_id": 595,
+        "base_wrong_id": 600
+      },
+      {
+        "prompt": "def max_difference(test_list):\n  temp = [abs(b - a) for a, b in test_list]\n  res = max(temp)\n  return",
+        "correct": " (",
+        "wrong": " res",
+        "name": "mbpp_63_0",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": -7.391074180603027,
+        "base_correct_id": 320,
+        "base_wrong_id": 592
+      },
+      {
+        "prompt": "import re\ndef snake_to_camel(word):\n  return",
+        "correct": " '",
+        "wrong": " word",
+        "name": "mbpp_411_0",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": -6.502881050109863,
+        "base_correct_id": 364,
+        "base_wrong_id": 3409
+      },
+      {
+        "prompt": "\ndef even_odd_count(num):\n    \"\"\"Given an integer. return a tuple that has the number of even and odd digits respectively.\n\n     Example:\n        even_odd_count(-12) ==> (1, 1)\n        even_odd_count(123) ==> (1, 2)\n    \"\"\"\n    even_count = 0\n    odd_count = 0\n    for",
+        "correct": " i",
+        "wrong": " digit",
+        "name": "he_HumanEval_155_0",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": -4.864861488342285,
+        "base_correct_id": 600,
+        "base_wrong_id": 15723
+      },
+      {
+        "prompt": "import math\n\n\ndef poly(xs: list, x: float):\n    \"\"\"\n    Evaluates polynomial with coefficients xs at point x.\n    return",
+        "correct": " xs",
+        "wrong": " value",
+        "name": "he_HumanEval_32_0",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": -4.594552040100098,
+        "base_correct_id": 11943,
+        "base_wrong_id": 897
+      },
+      {
+        "prompt": "def validate(n): \n    for i in range(10): \n        temp = n;  \n        count = 0; \n        while",
+        "correct": " (",
+        "wrong": " temp",
+        "name": "mbpp_283_1",
+        "category": "while",
+        "source": "humaneval+mbpp",
+        "base_gap": -4.260834693908691,
+        "base_correct_id": 320,
+        "base_wrong_id": 2730
+      },
+      {
+        "prompt": "def check_integer(text):\n text = text.strip()\n if",
+        "correct": " len",
+        "wrong": " not",
+        "name": "mbpp_113_0",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": -3.5841064453125,
+        "base_correct_id": 2422,
+        "base_wrong_id": 537
+      },
+      {
+        "prompt": "from collections import defaultdict\ndef max_occurrences(nums):\n    dict = defaultdict(int)\n    for",
+        "correct": " i",
+        "wrong": " num",
+        "name": "mbpp_130_0",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": -2.9605369567871094,
+        "base_correct_id": 600,
+        "base_wrong_id": 1629
+      },
+      {
+        "prompt": "\ndef sorted_list_sum(lst):\n    \"\"\"Write a function that accepts a list of strings as a parameter,\n    deletes the strings that have odd lengths from it,\n    and returns the resulted list with a sorted order,\n    The list is always a list of strings and never an array of numbers,\n    and it may contain duplicates.\n    The order of the list should be ascending by length of each word, and you\n    should return the list sorted by that rule.\n    If two words have the same length, sort the list alphabetically.\n    The function should return a list of strings in sorted order.\n    You may assume that all words will have the same length.\n    For example:\n    assert list_sort([\"aa\", \"a\", \"aaa\"]) => [\"aa\"]\n    assert list_sort([\"ab\", \"a\", \"aaa\", \"cd\"]) => [\"ab\", \"cd\"]\n    \"\"\"\n    lst.sort()\n    new_lst = []\n    for",
+        "correct": " i",
+        "wrong": " word",
+        "name": "he_HumanEval_149_0",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": -2.6389732360839844,
+        "base_correct_id": 600,
+        "base_wrong_id": 3409
+      },
+      {
+        "prompt": "def power(a,b):\n\tif b==0:\n\t\treturn 1\n\telif",
+        "correct": " a",
+        "wrong": " b",
+        "name": "mbpp_93_2",
+        "category": "elif",
+        "source": "humaneval+mbpp",
+        "base_gap": -2.2059803009033203,
+        "base_correct_id": 264,
+        "base_wrong_id": 293
+      },
+      {
+        "prompt": "def is_majority(arr, n, x):\n\ti = binary_search(arr, 0, n-1, x)\n\tif i == -1:\n\t\treturn False\n\tif",
+        "correct": " (",
+        "wrong": " i",
+        "name": "mbpp_223_2",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": -2.194761276245117,
+        "base_correct_id": 320,
+        "base_wrong_id": 600
+      },
+      {
+        "prompt": "\ndef is_sorted(lst):\n    '''\n    Given a list of numbers, return whether or not they are sorted\n    in ascending order. If list has more than 1 duplicate of the same\n    number, return False. Assume no negative numbers and only integers.\n\n    Examples\n    is_sorted([5]) \u279e True\n    is_sorted([1, 2, 3, 4, 5]) \u279e True\n    is_sorted([1, 3, 2, 4, 5]) \u279e False\n    is_sorted([1, 2, 3, 4, 5, 6]) \u279e True\n    is_sorted([1, 2, 3, 4, 5, 6, 7]) \u279e True\n    is_sorted([1, 3, 2, 4, 5, 6, 7]) \u279e False\n    is_sorted([1, 2, 2, 3, 3, 4]) \u279e True\n    is_sorted([1, 2, 2, 2, 3, 4]) \u279e False\n    '''\n    count_digit = dict([(i, 0) for i in lst])\n    for i in lst:\n        count_digit[i]+=1 \n    if any(count_digit[i] > 2 for i in lst):\n        return False\n    if",
+        "correct": " all",
+        "wrong": " len",
+        "name": "he_HumanEval_126_3",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": -2.071962356567383,
+        "base_correct_id": 678,
+        "base_wrong_id": 2422
+      },
+      {
+        "prompt": "\ndef will_it_fly(q,w):\n    '''\n    Write a function that returns True if the object q will fly, and False otherwise.\n    The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is less than or equal the maximum possible weight w.\n\n    Example:\n    will_it_fly([1, 2], 5) \u279e False \n    # 1+2 is less than the maximum possible weight, but it's unbalanced.\n\n    will_it_fly([3, 2, 3], 1) \u279e False\n    # it's balanced, but 3+2+3 is more than the maximum possible weight.\n\n    will_it_fly([3, 2, 3], 9) \u279e True\n    # 3+2+3 is less than the maximum possible weight, and it's balanced.\n\n    will_it_fly([3], 5) \u279e True\n    # 3 is less than the maximum possible weight, and it's balanced.\n    '''\n    if",
+        "correct": " sum",
+        "wrong": " not",
+        "name": "he_HumanEval_72_0",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": -1.9158544540405273,
+        "base_correct_id": 2629,
+        "base_wrong_id": 537
+      },
+      {
+        "prompt": "def closest_num(N):\n  return",
+        "correct": " (",
+        "wrong": " N",
+        "name": "mbpp_89_0",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": -1.762237548828125,
+        "base_correct_id": 320,
+        "base_wrong_id": 451
+      },
+      {
+        "prompt": "def find_star_num(n): \n\treturn",
+        "correct": " (",
+        "wrong": " n",
+        "name": "mbpp_268_0",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": -1.325057029724121,
+        "base_correct_id": 320,
+        "base_wrong_id": 308
+      },
+      {
+        "prompt": "from collections import Counter \ndef count_Occurrence(tup, lst): \n    count = 0\n    for",
+        "correct": " item",
+        "wrong": " i",
+        "name": "mbpp_446_0",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": -1.214700698852539,
+        "base_correct_id": 1509,
+        "base_wrong_id": 600
+      },
+      {
+        "prompt": "def max_sub_array_sum_repeated(a, n, k): \n\tmax_so_far = -2147483648\n\tmax_ending_here = 0\n\tfor i in range(n*k): \n\t\tmax_ending_here = max_ending_here + a[i%n] \n\t\tif",
+        "correct": " (",
+        "wrong": " max",
+        "name": "mbpp_286_1",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": -1.1371345520019531,
+        "base_correct_id": 320,
+        "base_wrong_id": 1932
+      },
+      {
+        "prompt": "from typing import List, Tuple\n\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    \"\"\" From a supplied list of numbers (of length at least two) select and return two that are the closest to each\n    other and return them in order (smaller number, larger number).\n    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])\n    (2.0, 2.2)\n    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])\n    (2.0, 2.0)\n    \"\"\"\n    closest_pair = None\n    distance = None\n\n    for idx, elem in enumerate(numbers):\n        for idx2, elem2 in enumerate(numbers):\n            if idx != idx2:\n                if",
+        "correct": " distance",
+        "wrong": " closest",
+        "name": "he_HumanEval_20_3",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": -1.0203056335449219,
+        "base_correct_id": 6010,
+        "base_wrong_id": 18093
+      },
+      {
+        "prompt": "def is_sublist(l, s):\n\tsub_set = False\n\tif s == []:\n\t\tsub_set = True\n\telif",
+        "correct": " s",
+        "wrong": " l",
+        "name": "mbpp_69_1",
+        "category": "elif",
+        "source": "humaneval+mbpp",
+        "base_gap": -0.9261465072631836,
+        "base_correct_id": 274,
+        "base_wrong_id": 326
+      },
+      {
+        "prompt": "def first_non_repeating_character(str1):\n  char_order = []\n  ctr = {}\n  for",
+        "correct": " c",
+        "wrong": " char",
+        "name": "mbpp_395_0",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": -0.8238239288330078,
+        "base_correct_id": 272,
+        "base_wrong_id": 1161
+      },
+      {
+        "prompt": "def sum(a,b): \n    sum = 0\n    for i in range (1,min(a,b)): \n        if",
+        "correct": " (",
+        "wrong": " a",
+        "name": "mbpp_126_1",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 0.09576416015625,
+        "base_correct_id": 320,
+        "base_wrong_id": 264
+      },
+      {
+        "prompt": "def is_undulating(n): \n\tn = str(n)\n\tif (len(n) <= 2): \n\t\treturn False\n\tfor i in range(2, len(n)): \n\t\tif",
+        "correct": " (",
+        "wrong": " n",
+        "name": "mbpp_92_3",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 0.30507659912109375,
+        "base_correct_id": 320,
+        "base_wrong_id": 308
+      },
+      {
+        "prompt": "def pancake_sort(nums):\n    arr_len = len(nums)\n    while",
+        "correct": " arr_len",
+        "wrong": " True",
+        "name": "mbpp_141_0",
+        "category": "while",
+        "source": "humaneval+mbpp",
+        "base_gap": 0.3484230041503906,
+        "base_correct_id": 2890,
+        "base_wrong_id": 3007
+      },
+      {
+        "prompt": "\ndef any_int(x, y, z):\n    '''\n    Create a function that takes 3 numbers.\n    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.\n    Returns false in any other cases.\n    \n    Examples\n    any_int(5, 2, 7) \u279e True\n    \n    any_int(3, 2, 2) \u279e False\n\n    any_int(3, -2, 1) \u279e True\n    \n    any_int(3.6, -2.2, 2) \u279e False\n  \n\n    \n    '''\n    \n    if isinstance(x,int) and isinstance(y,int) and isinstance(z,int):\n        if",
+        "correct": " (",
+        "wrong": " x",
+        "name": "he_HumanEval_92_1",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 0.6261358261108398,
+        "base_correct_id": 320,
+        "base_wrong_id": 856
+      },
+      {
+        "prompt": "\ndef encrypt(s):\n    \"\"\"Create a function encrypt that takes a string as an argument and\n    returns a string encrypted with the alphabet being rotated. \n    The alphabet should be rotated in a manner such that the letters \n    shift down by two multiplied to two places.\n    For example:\n    encrypt('hi') returns 'lm'\n    encrypt('asdfghjkl') returns 'ewhjklnop'\n    encrypt('gf') returns 'kj'\n    encrypt('et') returns 'ix'\n    \"\"\"\n    d = 'abcdefghijklmnopqrstuvwxyz'\n    out = ''\n    for",
+        "correct": " c",
+        "wrong": " char",
+        "name": "he_HumanEval_89_0",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": 0.6843147277832031,
+        "base_correct_id": 272,
+        "base_wrong_id": 1161
+      },
+      {
+        "prompt": "def newman_prime(n): \n\tif n == 0 or n == 1: \n\t\treturn",
+        "correct": " 1",
+        "wrong": " n",
+        "name": "mbpp_260_1",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 1.182159423828125,
+        "base_correct_id": 220,
+        "base_wrong_id": 308
+      },
+      {
+        "prompt": "\ndef histogram(test):\n    \"\"\"Given a string representing a space separated lowercase letters, return a dictionary\n    of the letter with the most repetition and containing the corresponding count.\n    If several letters have the same occurrence, return all of them.\n    \n    Example:\n    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}\n    histogram('a b b a') == {'a': 2, 'b': 2}\n    histogram('a b c a b') == {'a': 2, 'b': 2}\n    histogram('b b b b a') == {'b': 4}\n    histogram('') == {}\n\n    \"\"\"\n    dict1={}\n    list1=test.split(\" \")\n    t=0\n\n    for i in list1:\n        if(list1.count(i)>t) and i!='':\n            t=list1.count(i)\n    if",
+        "correct": " t",
+        "wrong": " len",
+        "name": "he_HumanEval_111_1",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 1.3261632919311523,
+        "base_correct_id": 259,
+        "base_wrong_id": 2422
+      },
+      {
+        "prompt": "def get_total_number_of_sequences(m,n): \n\tT=[[0 for i in range(n+1)] for i in range(m+1)] \n\tfor i in range(m+1): \n\t\tfor j in range(n+1): \n\t\t\tif",
+        "correct": " i",
+        "wrong": " (",
+        "name": "mbpp_239_2",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 1.628279685974121,
+        "base_correct_id": 600,
+        "base_wrong_id": 320
+      },
+      {
+        "prompt": "\ndef digits(n):\n    \"\"\"Given a positive integer n, return the product of the odd digits.\n    Return 0 if all digits are even.\n    For example:\n    digits(1)  == 1\n    digits(4)  == 0\n    digits(235) == 15\n    \"\"\"\n    product = 1\n    odd_count = 0\n    for digit in str(n):\n        int_digit = int(digit)\n        if int_digit%2 == 1:\n            product= product*int_digit\n            odd_count+=1\n    if odd_count ==0:\n        return",
+        "correct": " 0",
+        "wrong": "0",
+        "name": "he_HumanEval_131_3",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.0820579528808594,
+        "base_correct_id": 220,
+        "base_wrong_id": 15
+      },
+      {
+        "prompt": "\ndef fix_spaces(text):\n    \"\"\"\n    Given a string text, replace all spaces in it with underscores, \n    and if a string has more than 2 consecutive spaces, \n    then replace all consecutive spaces with - \n    \n    fix_spaces(\"Example\") == \"Example\"\n    fix_spaces(\"Example 1\") == \"Example_1\"\n    fix_spaces(\" Example 2\") == \"_Example_2\"\n    fix_spaces(\" Example   3\") == \"_Example-3\"\n    \"\"\"\n    new_text = \"\"\n    i = 0\n    start, end = 0, 0\n    while i < len(text):\n        if text[i] == \" \":\n            end += 1\n        else:\n            if",
+        "correct": " end",
+        "wrong": " start",
+        "name": "he_HumanEval_140_2",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.1053075790405273,
+        "base_correct_id": 835,
+        "base_wrong_id": 1191
+      },
+      {
+        "prompt": "\ndef split_words(txt):\n    '''\n    Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you\n    should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the\n    alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25\n    Examples\n    split_words(\"Hello world!\") \u279e [\"Hello\", \"world!\"]\n    split_words(\"Hello,world!\") \u279e [\"Hello\", \"world!\"]\n    split_words(\"abcdef\") == 3 \n    '''\n    if \" \" in txt:\n        return txt.split()\n    elif \",\" in txt:\n        return",
+        "correct": " txt",
+        "wrong": " [",
+        "name": "he_HumanEval_125_3",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.407917022705078,
+        "base_correct_id": 7932,
+        "base_wrong_id": 508
+      },
+      {
+        "prompt": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n    for idx, elem in enumerate(numbers):\n        for idx2, elem2 in enumerate(numbers):\n            if",
+        "correct": " idx",
+        "wrong": " abs",
+        "name": "he_HumanEval_0_2",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.47259521484375,
+        "base_correct_id": 7187,
+        "base_wrong_id": 3647
+      },
+      {
+        "prompt": "def sum_range_list(list1, m, n):                                                                                                                                                                                                \n    sum_range = 0                                                                                                                                                                                                         \n    for",
+        "correct": " i",
+        "wrong": " x",
+        "name": "mbpp_170_0",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.4850826263427734,
+        "base_correct_id": 600,
+        "base_wrong_id": 856
+      },
+      {
+        "prompt": "def find_substring(str1, sub_str):\n   if any(sub_str in s for s in str1):\n       return",
+        "correct": " True",
+        "wrong": " sub",
+        "name": "mbpp_91_1",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.5465869903564453,
+        "base_correct_id": 3007,
+        "base_wrong_id": 1186
+      },
+      {
+        "prompt": "def neg_nos(list1):\n  out = []\n  for num in list1: \n    if",
+        "correct": " num",
+        "wrong": " not",
+        "name": "mbpp_436_1",
+        "category": "if",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.6068010330200195,
+        "base_correct_id": 1629,
+        "base_wrong_id": 537
+      },
+      {
+        "prompt": "def is_sublist(l, s):\n\tsub_set = False\n\tif s == []:\n\t\tsub_set = True\n\telif s == l:\n\t\tsub_set = True\n\telif len(s) > len(l):\n\t\tsub_set = False\n\telse:\n\t\tfor",
+        "correct": " i",
+        "wrong": " j",
+        "name": "mbpp_69_3",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.619582176208496,
+        "base_correct_id": 600,
+        "base_wrong_id": 502
+      },
+      {
+        "prompt": "def dif_Square(n): \n    if (n % 4 != 2): \n        return True\n    return",
+        "correct": " False",
+        "wrong": " dif",
+        "name": "mbpp_72_2",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 2.751143455505371,
+        "base_correct_id": 3557,
+        "base_wrong_id": 1396
+      },
+      {
+        "prompt": "\n\ndef median(l: list):\n    \"\"\"Return median of elements in the list l.\n    >>> median([3, 1, 2, 4, 5])\n    3\n    >>> median([-10, 4, 6, 1000, 10, 20])\n    15.0\n    \"\"\"\n    l = sorted(l)\n    if len(l) % 2 == 1:\n        return",
+        "correct": " l",
+        "wrong": " float",
+        "name": "he_HumanEval_47_1",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 3.0586071014404297,
+        "base_correct_id": 326,
+        "base_wrong_id": 2224
+      },
+      {
+        "prompt": "def max_product_tuple(list1):\n    result_max = max([abs(x * y) for x, y in list1] )\n    return",
+        "correct": " result_max",
+        "wrong": " [",
+        "name": "mbpp_120_0",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 3.119269371032715,
+        "base_correct_id": 1102,
+        "base_wrong_id": 508
+      }
+    ],
+    "promoted_controls": [
+      {
+        "prompt": "from typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n    balance = 0\n\n    for op in operations:\n        balance += op\n        if balance < 0:\n            return",
+        "correct": " True",
+        "wrong": " False",
+        "name": "he_HumanEval_3_2",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 10.288702964782715,
+        "base_correct_id": 3007,
+        "base_wrong_id": 3557
+      },
+      {
+        "prompt": "\ndef file_name_check(file_name):\n    \"\"\"Create a function which takes a string representing a file's name, and returns\n    'Yes' if the the file's name is valid, and returns 'No' otherwise.\n    A file's name is considered to be valid if and only if all the following conditions \n    are met:\n    - There should not be more than three digits ('0'-'9') in the file's name.\n    - The file's name contains exactly one dot '.'\n    - The substring before the dot should not be empty, and it starts with a letter from \n    the latin alphapet ('a'-'z' and 'A'-'Z').\n    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']\n    Examples:\n    file_name_check(\"example.txt\") # => 'Yes'\n    file_name_check(\"1example.dll\") # => 'No' (the name should start with a latin alphapet letter)\n    \"\"\"\n    suf = ['txt', 'exe', 'dll']\n    lst = file_name.split(sep='.')\n    if len(lst) != 2:\n        return 'No'\n    if not lst[1] in suf:\n        return",
+        "correct": " '",
+        "wrong": " \"",
+        "name": "he_HumanEval_141_3",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 9.358184814453125,
+        "base_correct_id": 364,
+        "base_wrong_id": 330
+      },
+      {
+        "prompt": "def multiply_num(numbers):  \n    total = 1\n    for x in numbers:\n        total *= x  \n    return",
+        "correct": " total",
+        "wrong": " (",
+        "name": "mbpp_98_1",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 9.316823959350586,
+        "base_correct_id": 2790,
+        "base_wrong_id": 320
+      },
+      {
+        "prompt": "\ndef numerical_letter_grade(grades):\n    \"\"\"It is the last week of the semester and the teacher has to give the grades\n    to students. The teacher has been making her own algorithm for grading.\n    The only problem is, she has lost the code she used for grading.\n    She has given you a list of GPAs for some students and you have to write \n    a function that can output a list of letter grades using the following table:\n             GPA       |    Letter grade\n              4.0                A+\n            > 3.7                A \n            > 3.3                A- \n            > 3.0                B+\n            > 2.7                B \n            > 2.3                B-\n            > 2.0                C+\n            > 1.7                C\n            > 1.3                C-\n            > 1.0                D+ \n            > 0.7                D \n            > 0.0                D-\n              0.0                E\n    \n\n    Example:\n    grade_equation([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']\n    \"\"\"\n\n   \n    letter_grade = []\n    for gpa in grades:\n        if gpa == 4.0:\n            letter_grade.append(\"A+\")\n        elif gpa > 3.7:\n            letter_grade.append(\"A\")\n        elif",
+        "correct": " gpa",
+        "wrong": " grade",
+        "name": "he_HumanEval_81_3",
+        "category": "elif",
+        "source": "humaneval+mbpp",
+        "base_gap": 9.013070106506348,
+        "base_correct_id": 342,
+        "base_wrong_id": 11972
+      },
+      {
+        "prompt": "\n\ndef sort_even(l: list):\n    \"\"\"This function takes a list l and returns a list l' such that\n    l' is identical to l in the odd indicies, while its values at the even indicies are equal\n    to the values of the even indicies of l, but sorted.\n    >>> sort_even([1, 2, 3])\n    [1, 2, 3]\n    >>> sort_even([5, 6, 3, 4])\n    [3, 6, 5, 4]\n    \"\"\"\n    evens = l[::2]\n    odds = l[1::2]\n    evens.sort()\n    ans = []\n    for e, o in zip(evens, odds):\n        ans.extend([e, o])\n    if len(evens) > len(odds):\n        ans.append(evens[-1])\n    return",
+        "correct": " ans",
+        "wrong": " ''.",
+        "name": "he_HumanEval_37_2",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 8.731982231140137,
+        "base_correct_id": 8099,
+        "base_wrong_id": 42863
+      },
+      {
+        "prompt": "\n\ndef triples_sum_to_zero(l: list):\n    \"\"\"\n    triples_sum_to_zero takes a list of integers as an input.\n    it returns True if there are three distinct elements in the list that\n    sum to zero, and False otherwise.\n\n    >>> triples_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> triples_sum_to_zero([1, 3, -2, 1])\n    True\n    >>> triples_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n    True\n    >>> triples_sum_to_zero([1])\n    False\n    \"\"\"\n    for i in range(len(l)):\n        for",
+        "correct": " j",
+        "wrong": " a",
+        "name": "he_HumanEval_40_1",
+        "category": "for",
+        "source": "humaneval+mbpp",
+        "base_gap": 8.626727104187012,
+        "base_correct_id": 502,
+        "base_wrong_id": 264
+      },
+      {
+        "prompt": "def maximum(a,b):   \n    if a >= b: \n        return a \n    else: \n        return",
+        "correct": " b",
+        "wrong": " a",
+        "name": "mbpp_309_2",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 8.273124694824219,
+        "base_correct_id": 293,
+        "base_wrong_id": 264
+      },
+      {
+        "prompt": "def overlapping(list1,list2):  \n    for i in range(len(list1)): \n        for j in range(len(list2)): \n            if(list1[i]==list2[j]): \n                return True\n    return",
+        "correct": " False",
+        "wrong": " None",
+        "name": "mbpp_414_3",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 8.014287948608398,
+        "base_correct_id": 3557,
+        "base_wrong_id": 2240
+      },
+      {
+        "prompt": "\nFIX = \"\"\"\nAdd more test cases.\n\"\"\"\n\ndef vowels_count(s):\n    \"\"\"Write a function vowels_count which takes a string representing\n    a word as input and returns the number of vowels in the string.\n    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a\n    vowel, but only when it is at the end of the given word.\n\n    Example:\n    >>> vowels_count(\"abcde\")\n    2\n    >>> vowels_count(\"ACEDY\")\n    3\n    \"\"\"\n    vowels = \"aeiouAEIOU\"\n    n_vowels = sum(c in vowels for c in s)\n    if s[-1] == 'y' or s[-1] == 'Y':\n        n_vowels += 1\n    return",
+        "correct": " n_vowels",
+        "wrong": " max",
+        "name": "he_HumanEval_64_1",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 7.908639907836914,
+        "base_correct_id": 308,
+        "base_wrong_id": 1932
+      },
+      {
+        "prompt": "def find_Parity(x): \n    y = x ^ (x >> 1); \n    y = y ^ (y >> 2); \n    y = y ^ (y >> 4); \n    y = y ^ (y >> 8); \n    y = y ^ (y >> 16); \n    if (y & 1): \n        return True\n    return",
+        "correct": " False",
+        "wrong": " y",
+        "name": "mbpp_406_2",
+        "category": "return",
+        "source": "humaneval+mbpp",
+        "base_gap": 7.36769962310791,
+        "base_correct_id": 3557,
+        "base_wrong_id": 379
+      }
+    ]
+  },
+  "_uncalibrated": false,
+  "_calibrated_at": "2026-04-11T15:58:22Z",
+  "_calibration": {
+    "source_probes": 80,
+    "valid_probes": 80,
+    "base_failures": 21,
+    "base_corrects": 59,
+    "target_count": 40,
+    "control_count": 10
+  }
+}

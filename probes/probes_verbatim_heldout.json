@@ -1,0 +1,1010 @@
+{
+  "dataset_name": "verbatim_heldout_v1_extended",
+  "purpose": "Extended held-out evaluation for \u00a76.8.2. 100 probes total (20 original + 80 new), 20 per domain across legal, API, logs, medical, code. Tightens the n=20 pre-registered result from Exp A.",
+  "created": "2026-04-16",
+  "source": "Plans/extend_heldout_probes.py",
+  "n_probes": 100,
+  "domain_balance": "20 each from: legal, api, logs, medical, code",
+  "probes": [
+    {
+      "name": "heldout_legal_warranty",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the warranty disclaimer. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"This product is sold as-is with no express or implied warranties. The manufacturer is not responsible for damages arising from misuse. Returns are accepted within 30 days of purchase.\"\n\nExtract the sentence about warranty disclaimers.",
+      "correct_token": "This",
+      "wrong_token": "The",
+      "target_span": "This product is sold as-is with no express or implied warranties.",
+      "passage": "This product is sold as-is with no express or implied warranties. The manufacturer is not responsible for damages arising from misuse. Returns are accepted within 30 days of purchase."
+    },
+    {
+      "name": "heldout_legal_termination",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the termination right. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The subscription renews automatically each year on the anniversary date. Either party may terminate this agreement with thirty days written notice. Refunds for unused portions are not provided.\"\n\nExtract the sentence about termination.",
+      "correct_token": "Either",
+      "wrong_token": "The",
+      "target_span": "Either party may terminate this agreement with thirty days written notice.",
+      "passage": "The subscription renews automatically each year on the anniversary date. Either party may terminate this agreement with thirty days written notice. Refunds for unused portions are not provided."
+    },
+    {
+      "name": "heldout_legal_confidentiality",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes confidentiality duration. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Recipient shall treat all disclosed information as confidential. Confidentiality obligations survive termination for a period of five years. Return of materials is required upon request.\"\n\nExtract the sentence about confidentiality duration.",
+      "correct_token": "Confidentiality",
+      "wrong_token": "Recipient",
+      "target_span": "Confidentiality obligations survive termination for a period of five years.",
+      "passage": "Recipient shall treat all disclosed information as confidential. Confidentiality obligations survive termination for a period of five years. Return of materials is required upon request."
+    },
+    {
+      "name": "heldout_legal_jurisdiction",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that names the governing jurisdiction. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The parties acknowledge this agreement was negotiated at arm's length. This agreement shall be governed by the laws of the State of New York. Venue for any dispute shall lie in Manhattan courts.\"\n\nExtract the sentence naming the governing jurisdiction.",
+      "correct_token": "This",
+      "wrong_token": "The",
+      "target_span": "This agreement shall be governed by the laws of the State of New York.",
+      "passage": "The parties acknowledge this agreement was negotiated at arm's length. This agreement shall be governed by the laws of the State of New York. Venue for any dispute shall lie in Manhattan courts."
+    },
+    {
+      "name": "heldout_api_ratelimit",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the rate limit. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"All endpoints require TLS 1.2 or later. Requests are throttled to 500 per minute per API key. Responses include X-RateLimit-Remaining header.\"\n\nExtract the sentence about the rate limit.",
+      "correct_token": "Requests",
+      "wrong_token": "All",
+      "target_span": "Requests are throttled to 500 per minute per API key.",
+      "passage": "All endpoints require TLS 1.2 or later. Requests are throttled to 500 per minute per API key. Responses include X-RateLimit-Remaining header."
+    },
+    {
+      "name": "heldout_api_errorcode",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the 429 response. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Successful responses return 200 with a JSON body. A 429 status code indicates the rate limit has been exceeded. Retry after the interval shown in the Retry-After header.\"\n\nExtract the sentence about the 429 response.",
+      "correct_token": "A",
+      "wrong_token": "Successful",
+      "target_span": "A 429 status code indicates the rate limit has been exceeded.",
+      "passage": "Successful responses return 200 with a JSON body. A 429 status code indicates the rate limit has been exceeded. Retry after the interval shown in the Retry-After header."
+    },
+    {
+      "name": "heldout_api_deprecation",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the deprecation policy. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Version 2 of the API is available at /v2. Deprecated endpoints will be removed no less than 180 days after the deprecation notice. Consult the changelog before upgrading.\"\n\nExtract the sentence about the deprecation policy.",
+      "correct_token": "Deprecated",
+      "wrong_token": "Version",
+      "target_span": "Deprecated endpoints will be removed no less than 180 days after the deprecation notice.",
+      "passage": "Version 2 of the API is available at /v2. Deprecated endpoints will be removed no less than 180 days after the deprecation notice. Consult the changelog before upgrading."
+    },
+    {
+      "name": "heldout_api_webhook",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes webhook retries. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Webhook payloads are signed with HMAC-SHA256. Failed webhook deliveries are retried with exponential backoff for up to 24 hours. Event IDs are idempotent and may be deduplicated.\"\n\nExtract the sentence about webhook retries.",
+      "correct_token": "Failed",
+      "wrong_token": "Webhook",
+      "target_span": "Failed webhook deliveries are retried with exponential backoff for up to 24 hours.",
+      "passage": "Webhook payloads are signed with HMAC-SHA256. Failed webhook deliveries are retried with exponential backoff for up to 24 hours. Event IDs are idempotent and may be deduplicated."
+    },
+    {
+      "name": "heldout_log_oom",
+      "domain": "logs",
+      "system": "Extract the exact error message from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-03-08 09:14:02] INFO: Starting batch job nightly_export_42\n[2026-03-08 09:14:47] ERROR: Job killed by out-of-memory handler after allocating 48.3 GB\n[2026-03-08 09:14:48] INFO: Restarting job with increased memory limit\n\nExtract the error message.",
+      "correct_token": "Job",
+      "wrong_token": "The",
+      "target_span": "Job killed by out-of-memory handler after allocating 48.3 GB",
+      "passage": "[2026-03-08 09:14:02] INFO: Starting batch job nightly_export_42\n[2026-03-08 09:14:47] ERROR: Job killed by out-of-memory handler after allocating 48.3 GB\n[2026-03-08 09:14:48] INFO: Restarting job with increased memory limit"
+    },
+    {
+      "name": "heldout_log_deadlock",
+      "domain": "logs",
+      "system": "Extract the exact error message from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-05-22 14:02:11] DEBUG: Acquiring locks for transaction tx_88214\n[2026-05-22 14:02:31] ERROR: Deadlock detected on table orders and aborted transaction tx_88214\n[2026-05-22 14:02:31] INFO: Client will be retried with jitter\n\nExtract the error message.",
+      "correct_token": "Deadlock",
+      "wrong_token": "The",
+      "target_span": "Deadlock detected on table orders and aborted transaction tx_88214",
+      "passage": "[2026-05-22 14:02:11] DEBUG: Acquiring locks for transaction tx_88214\n[2026-05-22 14:02:31] ERROR: Deadlock detected on table orders and aborted transaction tx_88214\n[2026-05-22 14:02:31] INFO: Client will be retried with jitter"
+    },
+    {
+      "name": "heldout_log_ssl_fail",
+      "domain": "logs",
+      "system": "Extract the exact error message from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-07-14 23:11:05] INFO: Opening connection to upstream.example.com:443\n[2026-07-14 23:11:05] ERROR: SSL handshake failed due to expired server certificate\n[2026-07-14 23:11:06] WARN: Falling back to cached response\n\nExtract the error message.",
+      "correct_token": "SSL",
+      "wrong_token": "The",
+      "target_span": "SSL handshake failed due to expired server certificate",
+      "passage": "[2026-07-14 23:11:05] INFO: Opening connection to upstream.example.com:443\n[2026-07-14 23:11:05] ERROR: SSL handshake failed due to expired server certificate\n[2026-07-14 23:11:06] WARN: Falling back to cached response"
+    },
+    {
+      "name": "heldout_log_disk_full",
+      "domain": "logs",
+      "system": "Extract the exact error message from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-09-02 06:45:19] INFO: Writing checkpoint file to /var/data/ckpt-312\n[2026-09-02 06:45:19] ERROR: Unable to write checkpoint because the disk is full\n[2026-09-02 06:45:20] INFO: Triggering cleanup of temp files\n\nExtract the error message.",
+      "correct_token": "Unable",
+      "wrong_token": "The",
+      "target_span": "Unable to write checkpoint because the disk is full",
+      "passage": "[2026-09-02 06:45:19] INFO: Writing checkpoint file to /var/data/ckpt-312\n[2026-09-02 06:45:19] ERROR: Unable to write checkpoint because the disk is full\n[2026-09-02 06:45:20] INFO: Triggering cleanup of temp files"
+    },
+    {
+      "name": "heldout_med_contraindication",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the contraindication. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Indicated for treatment of moderate to severe pain. Do not administer to patients with known hypersensitivity to the active ingredient. Discontinue if rash develops.\"\n\nExtract the sentence about contraindications.",
+      "correct_token": "Do",
+      "wrong_token": "The",
+      "target_span": "Do not administer to patients with known hypersensitivity to the active ingredient.",
+      "passage": "Indicated for treatment of moderate to severe pain. Do not administer to patients with known hypersensitivity to the active ingredient. Discontinue if rash develops."
+    },
+    {
+      "name": "heldout_med_maxdose",
+      "domain": "medical",
+      "system": "Extract the exact sentence that states the maximum daily dose. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Administer by slow intravenous infusion over 30 minutes. Maximum daily dose should not exceed 400mg in patients with normal renal function. Reduce dose in renal impairment.\"\n\nExtract the sentence about the maximum daily dose.",
+      "correct_token": "Maximum",
+      "wrong_token": "The",
+      "target_span": "Maximum daily dose should not exceed 400mg in patients with normal renal function.",
+      "passage": "Administer by slow intravenous infusion over 30 minutes. Maximum daily dose should not exceed 400mg in patients with normal renal function. Reduce dose in renal impairment."
+    },
+    {
+      "name": "heldout_med_storage",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the storage requirements. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Supplied in single-dose vials of 2 mL. Store refrigerated at 2 to 8 degrees Celsius and protect from light. Do not use beyond the expiration date.\"\n\nExtract the sentence about storage.",
+      "correct_token": "Store",
+      "wrong_token": "The",
+      "target_span": "Store refrigerated at 2 to 8 degrees Celsius and protect from light.",
+      "passage": "Supplied in single-dose vials of 2 mL. Store refrigerated at 2 to 8 degrees Celsius and protect from light. Do not use beyond the expiration date."
+    },
+    {
+      "name": "heldout_med_pregnancy",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the pregnancy category. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Efficacy has been demonstrated in adult patients. Use during pregnancy is not recommended unless clearly needed because animal studies have shown teratogenic effects. Safety in pediatric patients has not been established.\"\n\nExtract the sentence about pregnancy.",
+      "correct_token": "Use",
+      "wrong_token": "The",
+      "target_span": "Use during pregnancy is not recommended unless clearly needed because animal studies have shown teratogenic effects.",
+      "passage": "Efficacy has been demonstrated in adult patients. Use during pregnancy is not recommended unless clearly needed because animal studies have shown teratogenic effects. Safety in pediatric patients has not been established."
+    },
+    {
+      "name": "heldout_code_func_parse",
+      "domain": "code",
+      "system": "Extract the exact function signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nimport json\nfrom typing import Any\n\ndef parse_config(path: str, validate: bool = True) -> dict[str, Any]:\n    \"\"\"Parse a config file and optionally validate it.\"\"\"\n    with open(path) as f:\n        return json.load(f)\n```\n\nExtract the function signature (the def line).",
+      "correct_token": "def",
+      "wrong_token": "The",
+      "target_span": "def parse_config(path: str, validate: bool = True) -> dict[str, Any]:",
+      "passage": "import json\nfrom typing import Any\n\ndef parse_config(path: str, validate: bool = True) -> dict[str, Any]:\n    \"\"\"Parse a config file and optionally validate it.\"\"\"\n    with open(path) as f:\n        return json.load(f)"
+    },
+    {
+      "name": "heldout_code_func_retry",
+      "domain": "code",
+      "system": "Extract the exact function signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nimport time\n\ndef retry_with_backoff(fn: callable, max_attempts: int = 3, initial_delay: float = 1.0) -> Any:\n    \"\"\"Retry a callable with exponential backoff.\"\"\"\n    for attempt in range(max_attempts):\n        try:\n            return fn()\n        except Exception:\n            time.sleep(initial_delay * (2 ** attempt))\n```\n\nExtract the function signature (the def line).",
+      "correct_token": "def",
+      "wrong_token": "The",
+      "target_span": "def retry_with_backoff(fn: callable, max_attempts: int = 3, initial_delay: float = 1.0) -> Any:",
+      "passage": "import time\n\ndef retry_with_backoff(fn: callable, max_attempts: int = 3, initial_delay: float = 1.0) -> Any:\n    \"\"\"Retry a callable with exponential backoff.\"\"\"\n    for attempt in range(max_attempts):\n        try:\n            return fn()\n        except Exception:\n            time.sleep(initial_delay * (2 ** attempt))"
+    },
+    {
+      "name": "heldout_code_func_cache",
+      "domain": "code",
+      "system": "Extract the exact function signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom functools import lru_cache\n\n@lru_cache(maxsize=128)\ndef compute_hash(data: bytes, algorithm: str = 'sha256') -> str:\n    \"\"\"Hash data with the specified algorithm.\"\"\"\n    import hashlib\n    return hashlib.new(algorithm, data).hexdigest()\n```\n\nExtract the function signature (the def line).",
+      "correct_token": "def",
+      "wrong_token": "The",
+      "target_span": "def compute_hash(data: bytes, algorithm: str = 'sha256') -> str:",
+      "passage": "from functools import lru_cache\n\n@lru_cache(maxsize=128)\ndef compute_hash(data: bytes, algorithm: str = 'sha256') -> str:\n    \"\"\"Hash data with the specified algorithm.\"\"\"\n    import hashlib\n    return hashlib.new(algorithm, data).hexdigest()"
+    },
+    {
+      "name": "heldout_code_func_batch",
+      "domain": "code",
+      "system": "Extract the exact function signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom typing import Iterator\n\ndef batched(iterable: list, n: int) -> Iterator[list]:\n    \"\"\"Yield successive n-sized batches from iterable.\"\"\"\n    for i in range(0, len(iterable), n):\n        yield iterable[i:i + n]\n```\n\nExtract the function signature (the def line).",
+      "correct_token": "def",
+      "wrong_token": "The",
+      "target_span": "def batched(iterable: list, n: int) -> Iterator[list]:",
+      "passage": "from typing import Iterator\n\ndef batched(iterable: list, n: int) -> Iterator[list]:\n    \"\"\"Yield successive n-sized batches from iterable.\"\"\"\n    for i in range(0, len(iterable), n):\n        yield iterable[i:i + n]"
+    },
+    {
+      "name": "heldout_legal_liability_cap",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the liability cap. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Each party remains responsible for its own direct costs of performance. Total liability shall not exceed fees paid in the preceding twelve months. Consequential damages are excluded from recovery for both parties.\"\n\nExtract the sentence about liability cap. Output ONLY that sentence.",
+      "correct_token": "Total",
+      "wrong_token": "Each",
+      "target_span": "Total liability shall not exceed fees paid in the preceding twelve months.",
+      "passage": "Each party remains responsible for its own direct costs of performance. Total liability shall not exceed fees paid in the preceding twelve months. Consequential damages are excluded from recovery for both parties."
+    },
+    {
+      "name": "heldout_legal_indemnification",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the indemnification. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Each party retains ownership of its own background intellectual property. The supplier shall indemnify the customer against third-party claims arising from product defects. The customer's indemnification obligation is limited to violations of the usage terms.\"\n\nExtract the sentence about indemnification. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "Each",
+      "target_span": "The supplier shall indemnify the customer against third-party claims arising from product defects.",
+      "passage": "Each party retains ownership of its own background intellectual property. The supplier shall indemnify the customer against third-party claims arising from product defects. The customer's indemnification obligation is limited to violations of the usage terms."
+    },
+    {
+      "name": "heldout_legal_assignment",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the assignment. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The parties are independent contractors under this agreement. Neither party may assign this agreement without prior written consent of the other party. A merger of one party does not by itself constitute an assignment.\"\n\nExtract the sentence about assignment. Output ONLY that sentence.",
+      "correct_token": "Neither",
+      "wrong_token": "The",
+      "target_span": "Neither party may assign this agreement without prior written consent of the other party.",
+      "passage": "The parties are independent contractors under this agreement. Neither party may assign this agreement without prior written consent of the other party. A merger of one party does not by itself constitute an assignment."
+    },
+    {
+      "name": "heldout_legal_force_majeure",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the force majeure. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The parties acknowledge that certain events are outside their reasonable control. Performance is excused during events beyond reasonable control including natural disasters, war, and governmental action. The excuse ceases when the event ends and reasonable effort permits resumption.\"\n\nExtract the sentence about force majeure. Output ONLY that sentence.",
+      "correct_token": "Performance",
+      "wrong_token": "The",
+      "target_span": "Performance is excused during events beyond reasonable control including natural disasters, war, and governmental action.",
+      "passage": "The parties acknowledge that certain events are outside their reasonable control. Performance is excused during events beyond reasonable control including natural disasters, war, and governmental action. The excuse ceases when the event ends and reasonable effort permits resumption."
+    },
+    {
+      "name": "heldout_legal_entire_agreement",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the entire agreement clause. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The parties have conferred at length prior to execution. This document constitutes the entire agreement and supersedes all prior negotiations, representations, and understandings. No oral statement shall be construed as modifying the obligations herein.\"\n\nExtract the sentence about entire agreement clause. Output ONLY that sentence.",
+      "correct_token": "This",
+      "wrong_token": "The",
+      "target_span": "This document constitutes the entire agreement and supersedes all prior negotiations, representations, and understandings.",
+      "passage": "The parties have conferred at length prior to execution. This document constitutes the entire agreement and supersedes all prior negotiations, representations, and understandings. No oral statement shall be construed as modifying the obligations herein."
+    },
+    {
+      "name": "heldout_legal_amendment",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the amendment procedure. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The agreement may be updated from time to time as circumstances require. Any modification must be in writing and signed by authorized representatives of both parties. Electronic signatures are acceptable for this purpose.\"\n\nExtract the sentence about amendment procedure. Output ONLY that sentence.",
+      "correct_token": "Any",
+      "wrong_token": "The",
+      "target_span": "Any modification must be in writing and signed by authorized representatives of both parties.",
+      "passage": "The agreement may be updated from time to time as circumstances require. Any modification must be in writing and signed by authorized representatives of both parties. Electronic signatures are acceptable for this purpose."
+    },
+    {
+      "name": "heldout_legal_notice",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the notice delivery. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Communications under this agreement are formal when properly delivered. All notices shall be delivered by certified mail to the address specified in the preamble. Electronic delivery is permitted only for routine operational updates.\"\n\nExtract the sentence about notice delivery. Output ONLY that sentence.",
+      "correct_token": "All",
+      "wrong_token": "Communications",
+      "target_span": "All notices shall be delivered by certified mail to the address specified in the preamble.",
+      "passage": "Communications under this agreement are formal when properly delivered. All notices shall be delivered by certified mail to the address specified in the preamble. Electronic delivery is permitted only for routine operational updates."
+    },
+    {
+      "name": "heldout_legal_severability",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the severability. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The parties have drafted this agreement with care to ensure enforceability. If any provision is deemed unenforceable the remaining provisions shall remain in full force. The parties agree to negotiate a replacement for any struck provision in good faith.\"\n\nExtract the sentence about severability. Output ONLY that sentence.",
+      "correct_token": "If",
+      "wrong_token": "The",
+      "target_span": "If any provision is deemed unenforceable the remaining provisions shall remain in full force.",
+      "passage": "The parties have drafted this agreement with care to ensure enforceability. If any provision is deemed unenforceable the remaining provisions shall remain in full force. The parties agree to negotiate a replacement for any struck provision in good faith."
+    },
+    {
+      "name": "heldout_legal_cure_period",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the cure period. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Either party may declare the other in material breach upon demonstration. The breaching party has thirty days to cure the breach upon receipt of written notice. If the breach is not cured the non-breaching party may terminate immediately.\"\n\nExtract the sentence about cure period. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "Either",
+      "target_span": "The breaching party has thirty days to cure the breach upon receipt of written notice.",
+      "passage": "Either party may declare the other in material breach upon demonstration. The breaching party has thirty days to cure the breach upon receipt of written notice. If the breach is not cured the non-breaching party may terminate immediately."
+    },
+    {
+      "name": "heldout_legal_late_payment",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the late payment interest. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Payment terms are net thirty from the date of invoice. Invoices not paid within thirty days accrue interest at one and a half percent per month. Disputed invoice items must be identified in writing within ten business days.\"\n\nExtract the sentence about late payment interest. Output ONLY that sentence.",
+      "correct_token": "Invoices",
+      "wrong_token": "Payment",
+      "target_span": "Invoices not paid within thirty days accrue interest at one and a half percent per month.",
+      "passage": "Payment terms are net thirty from the date of invoice. Invoices not paid within thirty days accrue interest at one and a half percent per month. Disputed invoice items must be identified in writing within ten business days."
+    },
+    {
+      "name": "heldout_legal_reservation",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the reservation of rights. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"A license granted under this agreement is limited and non-transferable. The vendor reserves all rights not expressly granted under this license. Nothing herein shall be construed to grant any implied license by estoppel or otherwise.\"\n\nExtract the sentence about reservation of rights. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "A",
+      "target_span": "The vendor reserves all rights not expressly granted under this license.",
+      "passage": "A license granted under this agreement is limited and non-transferable. The vendor reserves all rights not expressly granted under this license. Nothing herein shall be construed to grant any implied license by estoppel or otherwise."
+    },
+    {
+      "name": "heldout_legal_exclusivity",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the exclusivity. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"The customer has paid for exclusive distribution in the defined territory. During the term of this agreement the supplier shall not sell competing products to the customer's competitors. This restriction expires upon termination of the agreement.\"\n\nExtract the sentence about exclusivity. Output ONLY that sentence.",
+      "correct_token": "During",
+      "wrong_token": "The",
+      "target_span": "During the term of this agreement the supplier shall not sell competing products to the customer's competitors.",
+      "passage": "The customer has paid for exclusive distribution in the defined territory. During the term of this agreement the supplier shall not sell competing products to the customer's competitors. This restriction expires upon termination of the agreement."
+    },
+    {
+      "name": "heldout_legal_non_solicit",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the non-solicitation. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Each party may engage with the other's personnel only through designated contacts. For twelve months after termination neither party shall solicit employees of the other party. General recruitment advertisements are not prohibited under this clause.\"\n\nExtract the sentence about non-solicitation. Output ONLY that sentence.",
+      "correct_token": "For",
+      "wrong_token": "Each",
+      "target_span": "For twelve months after termination neither party shall solicit employees of the other party.",
+      "passage": "Each party may engage with the other's personnel only through designated contacts. For twelve months after termination neither party shall solicit employees of the other party. General recruitment advertisements are not prohibited under this clause."
+    },
+    {
+      "name": "heldout_legal_survival",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the survival of obligations. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Several obligations under this agreement are intended to outlast its term. The payment obligations survive termination of this agreement until satisfied in full. Confidentiality and indemnification obligations likewise continue as specified in their respective sections.\"\n\nExtract the sentence about survival of obligations. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "Several",
+      "target_span": "The payment obligations survive termination of this agreement until satisfied in full.",
+      "passage": "Several obligations under this agreement are intended to outlast its term. The payment obligations survive termination of this agreement until satisfied in full. Confidentiality and indemnification obligations likewise continue as specified in their respective sections."
+    },
+    {
+      "name": "heldout_legal_remedies",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the available remedies. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Money damages may prove inadequate for certain kinds of breaches. Equitable relief is available to either party in addition to any available legal remedies. The parties expressly waive any requirement to post a bond in connection with such relief.\"\n\nExtract the sentence about available remedies. Output ONLY that sentence.",
+      "correct_token": "Equitable",
+      "wrong_token": "Money",
+      "target_span": "Equitable relief is available to either party in addition to any available legal remedies.",
+      "passage": "Money damages may prove inadequate for certain kinds of breaches. Equitable relief is available to either party in addition to any available legal remedies. The parties expressly waive any requirement to post a bond in connection with such relief."
+    },
+    {
+      "name": "heldout_legal_audit_rights",
+      "domain": "legal",
+      "system": "Extract the exact sentence from the passage that describes the audit rights. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Passage: \"Compliance with the licensing terms is subject to verification. The customer may audit the supplier's records with thirty days written notice once per calendar year. The audit shall be conducted during normal business hours at the supplier's principal office.\"\n\nExtract the sentence about audit rights. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "Compliance",
+      "target_span": "The customer may audit the supplier's records with thirty days written notice once per calendar year.",
+      "passage": "Compliance with the licensing terms is subject to verification. The customer may audit the supplier's records with thirty days written notice once per calendar year. The audit shall be conducted during normal business hours at the supplier's principal office."
+    },
+    {
+      "name": "heldout_api_auth_oauth",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the OAuth authentication. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"The API supports both API keys and OAuth 2.0 authentication. OAuth access tokens are valid for one hour and must be refreshed before expiration. The client_credentials grant is recommended for server-to-server flows.\"\n\nExtract the sentence about OAuth authentication. Output ONLY that sentence.",
+      "correct_token": "OAuth",
+      "wrong_token": "The",
+      "target_span": "OAuth access tokens are valid for one hour and must be refreshed before expiration.",
+      "passage": "The API supports both API keys and OAuth 2.0 authentication. OAuth access tokens are valid for one hour and must be refreshed before expiration. The client_credentials grant is recommended for server-to-server flows."
+    },
+    {
+      "name": "heldout_api_pagination",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the pagination. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"List endpoints return results in paginated batches for efficiency. The maximum page size is 100 items and the default is 25. A cursor parameter is returned when more results are available.\"\n\nExtract the sentence about pagination. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "List",
+      "target_span": "The maximum page size is 100 items and the default is 25.",
+      "passage": "List endpoints return results in paginated batches for efficiency. The maximum page size is 100 items and the default is 25. A cursor parameter is returned when more results are available."
+    },
+    {
+      "name": "heldout_api_content_type",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the content type requirement. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"The API enforces strict content negotiation on all write operations. All POST and PUT requests must include Content-Type application/json in the request headers. Multipart form-data is accepted only on the upload endpoint.\"\n\nExtract the sentence about content type requirement. Output ONLY that sentence.",
+      "correct_token": "All",
+      "wrong_token": "The",
+      "target_span": "All POST and PUT requests must include Content-Type application/json in the request headers.",
+      "passage": "The API enforces strict content negotiation on all write operations. All POST and PUT requests must include Content-Type application/json in the request headers. Multipart form-data is accepted only on the upload endpoint."
+    },
+    {
+      "name": "heldout_api_versioning",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the version header. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"The API uses header-based versioning to enable safe iteration. Clients must include the header X-API-Version with the value 2024-11-01 on every request. Requests without this header are rejected with a 400 status code.\"\n\nExtract the sentence about version header. Output ONLY that sentence.",
+      "correct_token": "Clients",
+      "wrong_token": "The",
+      "target_span": "Clients must include the header X-API-Version with the value 2024-11-01 on every request.",
+      "passage": "The API uses header-based versioning to enable safe iteration. Clients must include the header X-API-Version with the value 2024-11-01 on every request. Requests without this header are rejected with a 400 status code."
+    },
+    {
+      "name": "heldout_api_cors",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the CORS policy. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Browser-originated requests are subject to origin validation. Cross-origin requests are permitted only from domains registered on the application's allowlist. Preflight OPTIONS responses are cached by the browser for 24 hours.\"\n\nExtract the sentence about CORS policy. Output ONLY that sentence.",
+      "correct_token": "Cross-origin",
+      "wrong_token": "Browser-originated",
+      "target_span": "Cross-origin requests are permitted only from domains registered on the application's allowlist.",
+      "passage": "Browser-originated requests are subject to origin validation. Cross-origin requests are permitted only from domains registered on the application's allowlist. Preflight OPTIONS responses are cached by the browser for 24 hours."
+    },
+    {
+      "name": "heldout_api_schema_validation",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the schema validation. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"All request bodies are validated against a published JSON schema. Fields that are missing, of the wrong type, or exceed documented limits result in a 400 Bad Request response. Validation errors include a list of field-level error messages.\"\n\nExtract the sentence about schema validation. Output ONLY that sentence.",
+      "correct_token": "Fields",
+      "wrong_token": "All",
+      "target_span": "Fields that are missing, of the wrong type, or exceed documented limits result in a 400 Bad Request response.",
+      "passage": "All request bodies are validated against a published JSON schema. Fields that are missing, of the wrong type, or exceed documented limits result in a 400 Bad Request response. Validation errors include a list of field-level error messages."
+    },
+    {
+      "name": "heldout_api_request_size",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the request size limit. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Uploads and writes are bounded to prevent resource exhaustion. Request bodies larger than 10 megabytes are rejected with a 413 Payload Too Large status code. Binary uploads should use the dedicated upload endpoint with streaming support.\"\n\nExtract the sentence about request size limit. Output ONLY that sentence.",
+      "correct_token": "Request",
+      "wrong_token": "Uploads",
+      "target_span": "Request bodies larger than 10 megabytes are rejected with a 413 Payload Too Large status code.",
+      "passage": "Uploads and writes are bounded to prevent resource exhaustion. Request bodies larger than 10 megabytes are rejected with a 413 Payload Too Large status code. Binary uploads should use the dedicated upload endpoint with streaming support."
+    },
+    {
+      "name": "heldout_api_idempotency",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the idempotency key. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"The API supports safe client-side retries on mutating endpoints. Clients should include an Idempotency-Key header with a unique UUID on every POST and PATCH request. Repeat requests with the same key within 24 hours return the original response.\"\n\nExtract the sentence about idempotency key. Output ONLY that sentence.",
+      "correct_token": "Clients",
+      "wrong_token": "The",
+      "target_span": "Clients should include an Idempotency-Key header with a unique UUID on every POST and PATCH request.",
+      "passage": "The API supports safe client-side retries on mutating endpoints. Clients should include an Idempotency-Key header with a unique UUID on every POST and PATCH request. Repeat requests with the same key within 24 hours return the original response."
+    },
+    {
+      "name": "heldout_api_response_format",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the response envelope format. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"All responses follow a consistent JSON envelope shape. Successful responses include a data field containing the primary result and a meta field with pagination state. Error responses include a single errors field containing a list of error objects.\"\n\nExtract the sentence about response envelope format. Output ONLY that sentence.",
+      "correct_token": "Successful",
+      "wrong_token": "All",
+      "target_span": "Successful responses include a data field containing the primary result and a meta field with pagination state.",
+      "passage": "All responses follow a consistent JSON envelope shape. Successful responses include a data field containing the primary result and a meta field with pagination state. Error responses include a single errors field containing a list of error objects."
+    },
+    {
+      "name": "heldout_api_timeout",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the request timeout. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Long-running operations should be invoked on the asynchronous jobs endpoint. Synchronous requests that exceed 30 seconds of server-side processing are cancelled with a 504 Gateway Timeout response. The recommended client-side timeout is 45 seconds.\"\n\nExtract the sentence about request timeout. Output ONLY that sentence.",
+      "correct_token": "Synchronous",
+      "wrong_token": "Long-running",
+      "target_span": "Synchronous requests that exceed 30 seconds of server-side processing are cancelled with a 504 Gateway Timeout response.",
+      "passage": "Long-running operations should be invoked on the asynchronous jobs endpoint. Synchronous requests that exceed 30 seconds of server-side processing are cancelled with a 504 Gateway Timeout response. The recommended client-side timeout is 45 seconds."
+    },
+    {
+      "name": "heldout_api_https_required",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the HTTPS requirement. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Security review mandates encrypted transport for every endpoint. Plain HTTP requests are rejected at the load balancer with an automatic 301 redirect to the HTTPS URL. Clients must support TLS 1.2 or later to connect successfully.\"\n\nExtract the sentence about HTTPS requirement. Output ONLY that sentence.",
+      "correct_token": "Plain",
+      "wrong_token": "Security",
+      "target_span": "Plain HTTP requests are rejected at the load balancer with an automatic 301 redirect to the HTTPS URL.",
+      "passage": "Security review mandates encrypted transport for every endpoint. Plain HTTP requests are rejected at the load balancer with an automatic 301 redirect to the HTTPS URL. Clients must support TLS 1.2 or later to connect successfully."
+    },
+    {
+      "name": "heldout_api_date_format",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the date format. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"All timestamp fields in the API use a standardized representation. Dates and timestamps are encoded as ISO 8601 strings in UTC with millisecond precision. Clients are responsible for converting to the user's local timezone as needed.\"\n\nExtract the sentence about date format. Output ONLY that sentence.",
+      "correct_token": "Dates",
+      "wrong_token": "All",
+      "target_span": "Dates and timestamps are encoded as ISO 8601 strings in UTC with millisecond precision.",
+      "passage": "All timestamp fields in the API use a standardized representation. Dates and timestamps are encoded as ISO 8601 strings in UTC with millisecond precision. Clients are responsible for converting to the user's local timezone as needed."
+    },
+    {
+      "name": "heldout_api_batch_format",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the batch request format. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"The batch endpoint accepts multiple operations in a single request. Each operation in the batch must include an op_id field that is unique within the request. Responses are returned in the same order as the operations in the request body.\"\n\nExtract the sentence about batch request format. Output ONLY that sentence.",
+      "correct_token": "Each",
+      "wrong_token": "The",
+      "target_span": "Each operation in the batch must include an op_id field that is unique within the request.",
+      "passage": "The batch endpoint accepts multiple operations in a single request. Each operation in the batch must include an op_id field that is unique within the request. Responses are returned in the same order as the operations in the request body."
+    },
+    {
+      "name": "heldout_api_concurrency",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the concurrency limit. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Quota enforcement applies to both rate and concurrency dimensions. A given API key may have at most 20 concurrent in-flight requests regardless of the rate limit window. Additional requests are rejected with a 429 Too Many Requests response.\"\n\nExtract the sentence about concurrency limit. Output ONLY that sentence.",
+      "correct_token": "A",
+      "wrong_token": "Quota",
+      "target_span": "A given API key may have at most 20 concurrent in-flight requests regardless of the rate limit window.",
+      "passage": "Quota enforcement applies to both rate and concurrency dimensions. A given API key may have at most 20 concurrent in-flight requests regardless of the rate limit window. Additional requests are rejected with a 429 Too Many Requests response."
+    },
+    {
+      "name": "heldout_api_default_sort",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the default sort order. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"List endpoints provide deterministic ordering for stable pagination. Results are sorted by the created_at field in descending order unless an explicit sort parameter is provided. Secondary sort uses the resource id to break ties.\"\n\nExtract the sentence about default sort order. Output ONLY that sentence.",
+      "correct_token": "Results",
+      "wrong_token": "List",
+      "target_span": "Results are sorted by the created_at field in descending order unless an explicit sort parameter is provided.",
+      "passage": "List endpoints provide deterministic ordering for stable pagination. Results are sorted by the created_at field in descending order unless an explicit sort parameter is provided. Secondary sort uses the resource id to break ties."
+    },
+    {
+      "name": "heldout_api_null_handling",
+      "domain": "api",
+      "system": "Extract the exact sentence from the documentation that describes the null value handling. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Documentation: \"Client libraries sometimes conflate null and missing fields in JSON. Fields set to null in a PATCH request are interpreted as explicit clears rather than no-ops. Omitting the field from the request body leaves the existing value unchanged.\"\n\nExtract the sentence about null value handling. Output ONLY that sentence.",
+      "correct_token": "Fields",
+      "wrong_token": "Client",
+      "target_span": "Fields set to null in a PATCH request are interpreted as explicit clears rather than no-ops.",
+      "passage": "Client libraries sometimes conflate null and missing fields in JSON. Fields set to null in a PATCH request are interpreted as explicit clears rather than no-ops. Omitting the field from the request body leaves the existing value unchanged."
+    },
+    {
+      "name": "heldout_log_db_timeout",
+      "domain": "logs",
+      "system": "Extract the exact database connection timeout line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 03:22:11] INFO: Worker 7 started processing job queue\n[2026-02-14 03:22:34] ERROR: Database connection timed out after 30000ms to primary host db-01.prod\n[2026-02-14 03:22:34] INFO: Worker 7 entering backoff state\n\nExtract the line describing the database connection timeout. Output ONLY that line.",
+      "correct_token": "Database",
+      "wrong_token": "Worker",
+      "target_span": "Database connection timed out after 30000ms to primary host db-01.prod",
+      "passage": "[2026-02-14 03:22:11] INFO: Worker 7 started processing job queue\n[2026-02-14 03:22:34] ERROR: Database connection timed out after 30000ms to primary host db-01.prod\n[2026-02-14 03:22:34] INFO: Worker 7 entering backoff state"
+    },
+    {
+      "name": "heldout_log_config_error",
+      "domain": "logs",
+      "system": "Extract the exact config parse error line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 03:30:02] INFO: Reloading configuration file /etc/app/settings.yaml\n[2026-02-14 03:30:02] ERROR: Failed to parse configuration at line 42 column 18 invalid YAML syntax\n[2026-02-14 03:30:02] INFO: Reverting to previously loaded configuration\n\nExtract the line describing the config parse error. Output ONLY that line.",
+      "correct_token": "Failed",
+      "wrong_token": "Reloading",
+      "target_span": "Failed to parse configuration at line 42 column 18 invalid YAML syntax",
+      "passage": "[2026-02-14 03:30:02] INFO: Reloading configuration file /etc/app/settings.yaml\n[2026-02-14 03:30:02] ERROR: Failed to parse configuration at line 42 column 18 invalid YAML syntax\n[2026-02-14 03:30:02] INFO: Reverting to previously loaded configuration"
+    },
+    {
+      "name": "heldout_log_auth_fail",
+      "domain": "logs",
+      "system": "Extract the exact authentication failure line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 03:45:55] INFO: API request received from client 10.0.0.42\n[2026-02-14 03:45:55] WARN: Authentication failed for user alice due to invalid token signature\n[2026-02-14 03:45:55] INFO: Response 401 returned to client 10.0.0.42\n\nExtract the line describing the authentication failure. Output ONLY that line.",
+      "correct_token": "Authentication",
+      "wrong_token": "API",
+      "target_span": "Authentication failed for user alice due to invalid token signature",
+      "passage": "[2026-02-14 03:45:55] INFO: API request received from client 10.0.0.42\n[2026-02-14 03:45:55] WARN: Authentication failed for user alice due to invalid token signature\n[2026-02-14 03:45:55] INFO: Response 401 returned to client 10.0.0.42"
+    },
+    {
+      "name": "heldout_log_ratelimit_hit",
+      "domain": "logs",
+      "system": "Extract the exact rate limit hit line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 04:10:08] INFO: Request processed for api_key_abc123 in 28ms\n[2026-02-14 04:10:09] WARN: Rate limit of 500 requests per minute exceeded for api_key_abc123\n[2026-02-14 04:10:09] INFO: Returning 429 with Retry-After header set to 12\n\nExtract the line describing the rate limit hit. Output ONLY that line.",
+      "correct_token": "Rate",
+      "wrong_token": "Request",
+      "target_span": "Rate limit of 500 requests per minute exceeded for api_key_abc123",
+      "passage": "[2026-02-14 04:10:08] INFO: Request processed for api_key_abc123 in 28ms\n[2026-02-14 04:10:09] WARN: Rate limit of 500 requests per minute exceeded for api_key_abc123\n[2026-02-14 04:10:09] INFO: Returning 429 with Retry-After header set to 12"
+    },
+    {
+      "name": "heldout_log_cache_miss",
+      "domain": "logs",
+      "system": "Extract the exact cache miss storm line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 04:15:22] INFO: Cache layer responding to 1834 lookups per second\n[2026-02-14 04:15:24] WARN: Cache miss rate spiked to 94% after upstream service restart\n[2026-02-14 04:15:25] INFO: Primary store absorbing elevated load within headroom\n\nExtract the line describing the cache miss storm. Output ONLY that line.",
+      "correct_token": "Cache",
+      "wrong_token": "The",
+      "target_span": "Cache miss rate spiked to 94% after upstream service restart",
+      "passage": "[2026-02-14 04:15:22] INFO: Cache layer responding to 1834 lookups per second\n[2026-02-14 04:15:24] WARN: Cache miss rate spiked to 94% after upstream service restart\n[2026-02-14 04:15:25] INFO: Primary store absorbing elevated load within headroom"
+    },
+    {
+      "name": "heldout_log_network_err",
+      "domain": "logs",
+      "system": "Extract the exact network connection error line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 04:20:00] INFO: Attempting outbound call to payments.partner.com\n[2026-02-14 04:20:03] ERROR: Network unreachable when contacting payments.partner.com from pod api-7f88\n[2026-02-14 04:20:03] INFO: Scheduling retry with backoff 2000ms\n\nExtract the line describing the network connection error. Output ONLY that line.",
+      "correct_token": "Network",
+      "wrong_token": "Attempting",
+      "target_span": "Network unreachable when contacting payments.partner.com from pod api-7f88",
+      "passage": "[2026-02-14 04:20:00] INFO: Attempting outbound call to payments.partner.com\n[2026-02-14 04:20:03] ERROR: Network unreachable when contacting payments.partner.com from pod api-7f88\n[2026-02-14 04:20:03] INFO: Scheduling retry with backoff 2000ms"
+    },
+    {
+      "name": "heldout_log_perm_denied",
+      "domain": "logs",
+      "system": "Extract the exact file permission denied line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 04:31:17] INFO: Beginning log rotation for /var/log/app\n[2026-02-14 04:31:17] ERROR: Permission denied while writing to /var/log/app/rotated/2026-02-14.gz\n[2026-02-14 04:31:17] INFO: Log rotation deferred to next scheduled run\n\nExtract the line describing the file permission denied. Output ONLY that line.",
+      "correct_token": "Permission",
+      "wrong_token": "Beginning",
+      "target_span": "Permission denied while writing to /var/log/app/rotated/2026-02-14.gz",
+      "passage": "[2026-02-14 04:31:17] INFO: Beginning log rotation for /var/log/app\n[2026-02-14 04:31:17] ERROR: Permission denied while writing to /var/log/app/rotated/2026-02-14.gz\n[2026-02-14 04:31:17] INFO: Log rotation deferred to next scheduled run"
+    },
+    {
+      "name": "heldout_log_tls_mismatch",
+      "domain": "logs",
+      "system": "Extract the exact TLS version mismatch line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 04:45:50] INFO: Incoming TLS handshake from 198.51.100.12\n[2026-02-14 04:45:50] WARN: TLS handshake rejected because client offered only TLS 1.0 and the server requires 1.2 or later\n[2026-02-14 04:45:50] INFO: Connection closed with alert code 70\n\nExtract the line describing the TLS version mismatch. Output ONLY that line.",
+      "correct_token": "TLS",
+      "wrong_token": "Incoming",
+      "target_span": "TLS handshake rejected because client offered only TLS 1.0 and the server requires 1.2 or later",
+      "passage": "[2026-02-14 04:45:50] INFO: Incoming TLS handshake from 198.51.100.12\n[2026-02-14 04:45:50] WARN: TLS handshake rejected because client offered only TLS 1.0 and the server requires 1.2 or later\n[2026-02-14 04:45:50] INFO: Connection closed with alert code 70"
+    },
+    {
+      "name": "heldout_log_corrupt_data",
+      "domain": "logs",
+      "system": "Extract the exact corrupt data read line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 05:02:09] INFO: Resuming batch processing from checkpoint\n[2026-02-14 05:02:10] ERROR: Corrupt record detected at offset 40960 in file batch_input_9.gz\n[2026-02-14 05:02:10] INFO: Skipping record and continuing with the next input\n\nExtract the line describing the corrupt data read. Output ONLY that line.",
+      "correct_token": "Corrupt",
+      "wrong_token": "Resuming",
+      "target_span": "Corrupt record detected at offset 40960 in file batch_input_9.gz",
+      "passage": "[2026-02-14 05:02:09] INFO: Resuming batch processing from checkpoint\n[2026-02-14 05:02:10] ERROR: Corrupt record detected at offset 40960 in file batch_input_9.gz\n[2026-02-14 05:02:10] INFO: Skipping record and continuing with the next input"
+    },
+    {
+      "name": "heldout_log_worker_crash",
+      "domain": "logs",
+      "system": "Extract the exact worker crash line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 05:15:33] INFO: Worker 3 assigned to task queue high-priority\n[2026-02-14 05:16:01] ERROR: Worker 3 terminated by SIGSEGV while handling request req_8821\n[2026-02-14 05:16:02] INFO: Supervisor respawning worker 3 with the same configuration\n\nExtract the line describing the worker crash. Output ONLY that line.",
+      "correct_token": "Worker",
+      "wrong_token": "The",
+      "target_span": "Worker 3 terminated by SIGSEGV while handling request req_8821",
+      "passage": "[2026-02-14 05:15:33] INFO: Worker 3 assigned to task queue high-priority\n[2026-02-14 05:16:01] ERROR: Worker 3 terminated by SIGSEGV while handling request req_8821\n[2026-02-14 05:16:02] INFO: Supervisor respawning worker 3 with the same configuration"
+    },
+    {
+      "name": "heldout_log_config_reload",
+      "domain": "logs",
+      "system": "Extract the exact configuration reload line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 05:20:44] INFO: Received SIGHUP from supervisor\n[2026-02-14 05:20:44] INFO: Configuration reloaded successfully with 3 updated feature flags\n[2026-02-14 05:20:44] INFO: All active connections preserved across reload\n\nExtract the line describing the configuration reload. Output ONLY that line.",
+      "correct_token": "Configuration",
+      "wrong_token": "Received",
+      "target_span": "Configuration reloaded successfully with 3 updated feature flags",
+      "passage": "[2026-02-14 05:20:44] INFO: Received SIGHUP from supervisor\n[2026-02-14 05:20:44] INFO: Configuration reloaded successfully with 3 updated feature flags\n[2026-02-14 05:20:44] INFO: All active connections preserved across reload"
+    },
+    {
+      "name": "heldout_log_healthcheck",
+      "domain": "logs",
+      "system": "Extract the exact health check failure line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 05:33:18] INFO: Periodic health probe invoked by load balancer\n[2026-02-14 05:33:23] WARN: Health check failed because downstream dependency redis-01 returned status 503\n[2026-02-14 05:33:23] INFO: Instance marked unhealthy and traffic drained\n\nExtract the line describing the health check failure. Output ONLY that line.",
+      "correct_token": "Health",
+      "wrong_token": "Periodic",
+      "target_span": "Health check failed because downstream dependency redis-01 returned status 503",
+      "passage": "[2026-02-14 05:33:18] INFO: Periodic health probe invoked by load balancer\n[2026-02-14 05:33:23] WARN: Health check failed because downstream dependency redis-01 returned status 503\n[2026-02-14 05:33:23] INFO: Instance marked unhealthy and traffic drained"
+    },
+    {
+      "name": "heldout_log_slow_query",
+      "domain": "logs",
+      "system": "Extract the exact slow query line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 05:45:00] INFO: Query planner selected sequential scan over index for table events\n[2026-02-14 05:45:19] WARN: Slow query detected on connection conn_412 taking 18.7 seconds to complete\n[2026-02-14 05:45:19] INFO: Query text logged to slow-query log for review\n\nExtract the line describing the slow query. Output ONLY that line.",
+      "correct_token": "Slow",
+      "wrong_token": "Query",
+      "target_span": "Slow query detected on connection conn_412 taking 18.7 seconds to complete",
+      "passage": "[2026-02-14 05:45:00] INFO: Query planner selected sequential scan over index for table events\n[2026-02-14 05:45:19] WARN: Slow query detected on connection conn_412 taking 18.7 seconds to complete\n[2026-02-14 05:45:19] INFO: Query text logged to slow-query log for review"
+    },
+    {
+      "name": "heldout_log_queue_drop",
+      "domain": "logs",
+      "system": "Extract the exact queue full drop line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 06:00:02] INFO: Ingest queue currently at 8912 of 10000 slots\n[2026-02-14 06:00:03] WARN: Ingest queue full and dropping 47 incoming messages over the last second\n[2026-02-14 06:00:03] INFO: Back-pressure signal sent to upstream producers\n\nExtract the line describing the queue full drop. Output ONLY that line.",
+      "correct_token": "Ingest",
+      "wrong_token": "The",
+      "target_span": "Ingest queue full and dropping 47 incoming messages over the last second",
+      "passage": "[2026-02-14 06:00:02] INFO: Ingest queue currently at 8912 of 10000 slots\n[2026-02-14 06:00:03] WARN: Ingest queue full and dropping 47 incoming messages over the last second\n[2026-02-14 06:00:03] INFO: Back-pressure signal sent to upstream producers"
+    },
+    {
+      "name": "heldout_log_container_oom",
+      "domain": "logs",
+      "system": "Extract the exact container killed line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 06:11:40] INFO: Container scheduler assigned workload to node-14\n[2026-02-14 06:12:05] ERROR: Container worker-b2 killed by kubelet due to memory usage exceeding 8Gi limit\n[2026-02-14 06:12:06] INFO: Scheduler creating replacement container on node-17\n\nExtract the line describing the container killed. Output ONLY that line.",
+      "correct_token": "Container",
+      "wrong_token": "The",
+      "target_span": "Container worker-b2 killed by kubelet due to memory usage exceeding 8Gi limit",
+      "passage": "[2026-02-14 06:11:40] INFO: Container scheduler assigned workload to node-14\n[2026-02-14 06:12:05] ERROR: Container worker-b2 killed by kubelet due to memory usage exceeding 8Gi limit\n[2026-02-14 06:12:06] INFO: Scheduler creating replacement container on node-17"
+    },
+    {
+      "name": "heldout_log_job_timeout",
+      "domain": "logs",
+      "system": "Extract the exact job timeout line from the log. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Log output:\n[2026-02-14 06:20:50] INFO: Background job report_generator_nightly began execution\n[2026-02-14 06:50:50] ERROR: Background job report_generator_nightly exceeded its 1800 second timeout and was cancelled\n[2026-02-14 06:50:51] INFO: Failure recorded to the jobs database for operator review\n\nExtract the line describing the job timeout. Output ONLY that line.",
+      "correct_token": "Background",
+      "wrong_token": "The",
+      "target_span": "Background job report_generator_nightly exceeded its 1800 second timeout and was cancelled",
+      "passage": "[2026-02-14 06:20:50] INFO: Background job report_generator_nightly began execution\n[2026-02-14 06:50:50] ERROR: Background job report_generator_nightly exceeded its 1800 second timeout and was cancelled\n[2026-02-14 06:50:51] INFO: Failure recorded to the jobs database for operator review"
+    },
+    {
+      "name": "heldout_medical_drug_interaction",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the drug interaction. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"This medication is metabolized primarily by CYP3A4. Concurrent use with strong CYP3A4 inhibitors increases plasma concentration and the risk of adverse effects. Dose reduction is recommended when co-administered with such agents.\"\n\nExtract the sentence about the drug interaction. Output ONLY that sentence.",
+      "correct_token": "Concurrent",
+      "wrong_token": "This",
+      "target_span": "Concurrent use with strong CYP3A4 inhibitors increases plasma concentration and the risk of adverse effects.",
+      "passage": "This medication is metabolized primarily by CYP3A4. Concurrent use with strong CYP3A4 inhibitors increases plasma concentration and the risk of adverse effects. Dose reduction is recommended when co-administered with such agents."
+    },
+    {
+      "name": "heldout_medical_pediatric",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the pediatric dosing. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Safety and efficacy have been evaluated in multiple age groups. Pediatric patients aged 6 to 12 should receive 5mg orally twice daily with meals. Dosing in children under 6 years of age has not been established.\"\n\nExtract the sentence about the pediatric dosing. Output ONLY that sentence.",
+      "correct_token": "Pediatric",
+      "wrong_token": "Safety",
+      "target_span": "Pediatric patients aged 6 to 12 should receive 5mg orally twice daily with meals.",
+      "passage": "Safety and efficacy have been evaluated in multiple age groups. Pediatric patients aged 6 to 12 should receive 5mg orally twice daily with meals. Dosing in children under 6 years of age has not been established."
+    },
+    {
+      "name": "heldout_medical_renal",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the renal impairment dose adjustment. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Clearance is reduced in patients with impaired kidney function. A dose reduction of 50% is required in patients with creatinine clearance below 30 milliliters per minute. Hemodialysis does not remove a clinically meaningful amount of drug.\"\n\nExtract the sentence about the renal impairment dose adjustment. Output ONLY that sentence.",
+      "correct_token": "A",
+      "wrong_token": "Clearance",
+      "target_span": "A dose reduction of 50% is required in patients with creatinine clearance below 30 milliliters per minute.",
+      "passage": "Clearance is reduced in patients with impaired kidney function. A dose reduction of 50% is required in patients with creatinine clearance below 30 milliliters per minute. Hemodialysis does not remove a clinically meaningful amount of drug."
+    },
+    {
+      "name": "heldout_medical_hepatic",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the hepatic impairment dose adjustment. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Hepatic metabolism contributes to the majority of clearance. Patients with moderate hepatic impairment classified as Child-Pugh B require a starting dose of 10mg rather than 20mg daily. Severe impairment is a contraindication for this medication.\"\n\nExtract the sentence about the hepatic impairment dose adjustment. Output ONLY that sentence.",
+      "correct_token": "Patients",
+      "wrong_token": "Hepatic",
+      "target_span": "Patients with moderate hepatic impairment classified as Child-Pugh B require a starting dose of 10mg rather than 20mg daily.",
+      "passage": "Hepatic metabolism contributes to the majority of clearance. Patients with moderate hepatic impairment classified as Child-Pugh B require a starting dose of 10mg rather than 20mg daily. Severe impairment is a contraindication for this medication."
+    },
+    {
+      "name": "heldout_medical_elderly",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the elderly dosing. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Safety in older adults was evaluated in the phase 3 clinical trials. Patients aged 65 years and older should initiate therapy at half the standard dose for at least two weeks before considering a dose increase. Monitor for orthostatic effects during initiation.\"\n\nExtract the sentence about the elderly dosing. Output ONLY that sentence.",
+      "correct_token": "Patients",
+      "wrong_token": "Safety",
+      "target_span": "Patients aged 65 years and older should initiate therapy at half the standard dose for at least two weeks before considering a dose increase.",
+      "passage": "Safety in older adults was evaluated in the phase 3 clinical trials. Patients aged 65 years and older should initiate therapy at half the standard dose for at least two weeks before considering a dose increase. Monitor for orthostatic effects during initiation."
+    },
+    {
+      "name": "heldout_medical_overdose",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the overdose management. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Reports of intentional overdose have been observed post-marketing. Overdose should be managed by gastric lavage within one hour of ingestion followed by activated charcoal and supportive care. There is no specific antidote for this medication.\"\n\nExtract the sentence about the overdose management. Output ONLY that sentence.",
+      "correct_token": "Overdose",
+      "wrong_token": "Reports",
+      "target_span": "Overdose should be managed by gastric lavage within one hour of ingestion followed by activated charcoal and supportive care.",
+      "passage": "Reports of intentional overdose have been observed post-marketing. Overdose should be managed by gastric lavage within one hour of ingestion followed by activated charcoal and supportive care. There is no specific antidote for this medication."
+    },
+    {
+      "name": "heldout_medical_monitoring",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the monitoring requirement. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Regular assessment is essential for patients on chronic therapy. Serum potassium and creatinine should be monitored every two weeks for the first three months and monthly thereafter. Dose adjustment may be required based on monitoring results.\"\n\nExtract the sentence about the monitoring requirement. Output ONLY that sentence.",
+      "correct_token": "Serum",
+      "wrong_token": "Regular",
+      "target_span": "Serum potassium and creatinine should be monitored every two weeks for the first three months and monthly thereafter.",
+      "passage": "Regular assessment is essential for patients on chronic therapy. Serum potassium and creatinine should be monitored every two weeks for the first three months and monthly thereafter. Dose adjustment may be required based on monitoring results."
+    },
+    {
+      "name": "heldout_medical_black_box",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the boxed warning. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Prescribers should review the entire prescribing information before use. Increased risk of major bleeding has been observed in patients on concurrent antiplatelet therapy. Permanent discontinuation is indicated in the event of a clinically significant bleed.\"\n\nExtract the sentence about the boxed warning. Output ONLY that sentence.",
+      "correct_token": "Increased",
+      "wrong_token": "Prescribers",
+      "target_span": "Increased risk of major bleeding has been observed in patients on concurrent antiplatelet therapy.",
+      "passage": "Prescribers should review the entire prescribing information before use. Increased risk of major bleeding has been observed in patients on concurrent antiplatelet therapy. Permanent discontinuation is indicated in the event of a clinically significant bleed."
+    },
+    {
+      "name": "heldout_medical_lactation",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the lactation advisory. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Transfer of drug substance into human milk has been studied. The medication is excreted in breast milk in measurable amounts and nursing infants should be monitored for sedation. Breastfeeding is not contraindicated but caution is advised.\"\n\nExtract the sentence about the lactation advisory. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "Transfer",
+      "target_span": "The medication is excreted in breast milk in measurable amounts and nursing infants should be monitored for sedation.",
+      "passage": "Transfer of drug substance into human milk has been studied. The medication is excreted in breast milk in measurable amounts and nursing infants should be monitored for sedation. Breastfeeding is not contraindicated but caution is advised."
+    },
+    {
+      "name": "heldout_medical_pediatric_special",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the pediatric safety caveat. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Additional considerations apply to children compared with adults. Children receiving this medication should be weighed at each visit because dose is calculated by body weight in milligrams per kilogram. Dose recalculation is required after any weight change of more than 10 percent.\"\n\nExtract the sentence about the pediatric safety caveat. Output ONLY that sentence.",
+      "correct_token": "Children",
+      "wrong_token": "Additional",
+      "target_span": "Children receiving this medication should be weighed at each visit because dose is calculated by body weight in milligrams per kilogram.",
+      "passage": "Additional considerations apply to children compared with adults. Children receiving this medication should be weighed at each visit because dose is calculated by body weight in milligrams per kilogram. Dose recalculation is required after any weight change of more than 10 percent."
+    },
+    {
+      "name": "heldout_medical_anaphylaxis",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the hypersensitivity reaction. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Hypersensitivity reactions have been reported post-approval. Anaphylaxis has occurred rarely and presents with rapid-onset urticaria, angioedema, and respiratory distress. The medication should be permanently discontinued in any patient with a hypersensitivity reaction.\"\n\nExtract the sentence about the hypersensitivity reaction. Output ONLY that sentence.",
+      "correct_token": "Anaphylaxis",
+      "wrong_token": "Hypersensitivity",
+      "target_span": "Anaphylaxis has occurred rarely and presents with rapid-onset urticaria, angioedema, and respiratory distress.",
+      "passage": "Hypersensitivity reactions have been reported post-approval. Anaphylaxis has occurred rarely and presents with rapid-onset urticaria, angioedema, and respiratory distress. The medication should be permanently discontinued in any patient with a hypersensitivity reaction."
+    },
+    {
+      "name": "heldout_medical_food_drug",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the food interaction. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Absorption may be affected by concurrent food intake. Bioavailability is reduced by 40% when the medication is taken with a high-fat meal compared to a fasted state. Patients should take this medication at least one hour before or two hours after eating.\"\n\nExtract the sentence about the food interaction. Output ONLY that sentence.",
+      "correct_token": "Bioavailability",
+      "wrong_token": "Absorption",
+      "target_span": "Bioavailability is reduced by 40% when the medication is taken with a high-fat meal compared to a fasted state.",
+      "passage": "Absorption may be affected by concurrent food intake. Bioavailability is reduced by 40% when the medication is taken with a high-fat meal compared to a fasted state. Patients should take this medication at least one hour before or two hours after eating."
+    },
+    {
+      "name": "heldout_medical_lab_monitor",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the laboratory test requirement. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Baseline laboratory assessment is required prior to initiation. A complete blood count with differential should be obtained before the first dose and repeated every four weeks for the first six months of therapy. Discontinue if neutrophil count falls below 1500 cells per microliter.\"\n\nExtract the sentence about the laboratory test requirement. Output ONLY that sentence.",
+      "correct_token": "A",
+      "wrong_token": "Baseline",
+      "target_span": "A complete blood count with differential should be obtained before the first dose and repeated every four weeks for the first six months of therapy.",
+      "passage": "Baseline laboratory assessment is required prior to initiation. A complete blood count with differential should be obtained before the first dose and repeated every four weeks for the first six months of therapy. Discontinue if neutrophil count falls below 1500 cells per microliter."
+    },
+    {
+      "name": "heldout_medical_discontinuation",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the discontinuation syndrome. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"Gradual dose reduction is required when discontinuing chronic therapy. Abrupt discontinuation may precipitate rebound symptoms including insomnia, anxiety, and transient elevation of blood pressure. Taper by 25% every seven days until discontinuation is complete.\"\n\nExtract the sentence about the discontinuation syndrome. Output ONLY that sentence.",
+      "correct_token": "Abrupt",
+      "wrong_token": "Gradual",
+      "target_span": "Abrupt discontinuation may precipitate rebound symptoms including insomnia, anxiety, and transient elevation of blood pressure.",
+      "passage": "Gradual dose reduction is required when discontinuing chronic therapy. Abrupt discontinuation may precipitate rebound symptoms including insomnia, anxiety, and transient elevation of blood pressure. Taper by 25% every seven days until discontinuation is complete."
+    },
+    {
+      "name": "heldout_medical_titration",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the dose titration. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"The medication is initiated at a low dose and titrated upward. Increase the dose by 5mg every seven days as tolerated until the target therapeutic dose of 20mg daily is reached. Patients who do not tolerate a dose increase should remain on the prior dose for an additional two weeks before reattempting.\"\n\nExtract the sentence about the dose titration. Output ONLY that sentence.",
+      "correct_token": "Increase",
+      "wrong_token": "The",
+      "target_span": "Increase the dose by 5mg every seven days as tolerated until the target therapeutic dose of 20mg daily is reached.",
+      "passage": "The medication is initiated at a low dose and titrated upward. Increase the dose by 5mg every seven days as tolerated until the target therapeutic dose of 20mg daily is reached. Patients who do not tolerate a dose increase should remain on the prior dose for an additional two weeks before reattempting."
+    },
+    {
+      "name": "heldout_medical_administration",
+      "domain": "medical",
+      "system": "Extract the exact sentence that describes the route of administration. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Prescribing information: \"The product is available in tablet and injectable formulations. The oral tablet should be swallowed whole with a full glass of water and should not be crushed or chewed. The injectable formulation is administered as an intramuscular injection by a healthcare provider.\"\n\nExtract the sentence about the route of administration. Output ONLY that sentence.",
+      "correct_token": "The",
+      "wrong_token": "Patients",
+      "target_span": "The oral tablet should be swallowed whole with a full glass of water and should not be crushed or chewed.",
+      "passage": "The product is available in tablet and injectable formulations. The oral tablet should be swallowed whole with a full glass of water and should not be crushed or chewed. The injectable formulation is administered as an intramuscular injection by a healthcare provider."
+    },
+    {
+      "name": "heldout_code_class_simple",
+      "domain": "code",
+      "system": "Extract the exact class definition from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nimport dataclasses\nfrom typing import Optional\n\nclass UserAccount:\n    \"\"\"Represents a user account with authentication metadata.\"\"\"\n    def __init__(self, user_id: str, email: str) -> None:\n        self.user_id = user_id\n        self.email = email\n```\n\nExtract the class definition. Output ONLY that line.",
+      "correct_token": "class",
+      "wrong_token": "import",
+      "target_span": "class UserAccount:",
+      "passage": "import dataclasses\nfrom typing import Optional\n\nclass UserAccount:\n    \"\"\"Represents a user account with authentication metadata.\"\"\"\n    def __init__(self, user_id: str, email: str) -> None:\n        self.user_id = user_id\n        self.email = email"
+    },
+    {
+      "name": "heldout_code_decorator",
+      "domain": "code",
+      "system": "Extract the exact decorator definition from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom functools import wraps\nimport time\n\ndef timing_decorator(fn):\n    \"\"\"Log the execution time of the wrapped function.\"\"\"\n    @wraps(fn)\n    def wrapper(*args, **kwargs):\n        start = time.monotonic()\n        return fn(*args, **kwargs)\n```\n\nExtract the decorator definition. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "from",
+      "target_span": "def timing_decorator(fn):",
+      "passage": "from functools import wraps\nimport time\n\ndef timing_decorator(fn):\n    \"\"\"Log the execution time of the wrapped function.\"\"\"\n    @wraps(fn)\n    def wrapper(*args, **kwargs):\n        start = time.monotonic()\n        return fn(*args, **kwargs)"
+    },
+    {
+      "name": "heldout_code_context_mgr",
+      "domain": "code",
+      "system": "Extract the exact context manager function from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom contextlib import contextmanager\nimport sqlite3\n\n@contextmanager\ndef open_database(path: str) -> Iterator[sqlite3.Connection]:\n    \"\"\"Yield a SQLite connection and close it on exit.\"\"\"\n    conn = sqlite3.connect(path)\n    try:\n        yield conn\n```\n\nExtract the context manager function. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "from",
+      "target_span": "def open_database(path: str) -> Iterator[sqlite3.Connection]:",
+      "passage": "from contextlib import contextmanager\nimport sqlite3\n\n@contextmanager\ndef open_database(path: str) -> Iterator[sqlite3.Connection]:\n    \"\"\"Yield a SQLite connection and close it on exit.\"\"\"\n    conn = sqlite3.connect(path)\n    try:\n        yield conn"
+    },
+    {
+      "name": "heldout_code_async_func",
+      "domain": "code",
+      "system": "Extract the exact async function signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nimport aiohttp\nfrom typing import Any\n\nasync def fetch_json(url: str, timeout: float = 10.0) -> dict[str, Any]:\n    \"\"\"Fetch a URL and parse the JSON response.\"\"\"\n    async with aiohttp.ClientSession() as session:\n        async with session.get(url, timeout=timeout) as response:\n            return await response.json()\n```\n\nExtract the async function signature. Output ONLY that line.",
+      "correct_token": "async",
+      "wrong_token": "import",
+      "target_span": "async def fetch_json(url: str, timeout: float = 10.0) -> dict[str, Any]:",
+      "passage": "import aiohttp\nfrom typing import Any\n\nasync def fetch_json(url: str, timeout: float = 10.0) -> dict[str, Any]:\n    \"\"\"Fetch a URL and parse the JSON response.\"\"\"\n    async with aiohttp.ClientSession() as session:\n        async with session.get(url, timeout=timeout) as response:\n            return await response.json()"
+    },
+    {
+      "name": "heldout_code_dataclass",
+      "domain": "code",
+      "system": "Extract the exact dataclass definition from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom dataclasses import dataclass, field\nfrom datetime import datetime\n\n@dataclass(frozen=True)\nclass Event:\n    event_id: str\n    event_type: str\n    payload: dict\n    created_at: datetime = field(default_factory=datetime.utcnow)\n```\n\nExtract the dataclass definition. Output ONLY that line.",
+      "correct_token": "class",
+      "wrong_token": "from",
+      "target_span": "class Event:",
+      "passage": "from dataclasses import dataclass, field\nfrom datetime import datetime\n\n@dataclass(frozen=True)\nclass Event:\n    event_id: str\n    event_type: str\n    payload: dict\n    created_at: datetime = field(default_factory=datetime.utcnow)"
+    },
+    {
+      "name": "heldout_code_typed_dict",
+      "domain": "code",
+      "system": "Extract the exact typed dict definition from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom typing import TypedDict, Optional\n\nclass UserProfile(TypedDict):\n    user_id: str\n    display_name: str\n    email: Optional[str]\n    created_at: str\n```\n\nExtract the typed dict definition. Output ONLY that line.",
+      "correct_token": "class",
+      "wrong_token": "from",
+      "target_span": "class UserProfile(TypedDict):",
+      "passage": "from typing import TypedDict, Optional\n\nclass UserProfile(TypedDict):\n    user_id: str\n    display_name: str\n    email: Optional[str]\n    created_at: str"
+    },
+    {
+      "name": "heldout_code_generic_func",
+      "domain": "code",
+      "system": "Extract the exact generic function signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom typing import TypeVar, Callable\n\nT = TypeVar(\"T\")\n\ndef apply_twice(fn: Callable[[T], T], value: T) -> T:\n    \"\"\"Apply a function to its own result once.\"\"\"\n    return fn(fn(value))\n```\n\nExtract the generic function signature. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "from",
+      "target_span": "def apply_twice(fn: Callable[[T], T], value: T) -> T:",
+      "passage": "from typing import TypeVar, Callable\n\nT = TypeVar(\"T\")\n\ndef apply_twice(fn: Callable[[T], T], value: T) -> T:\n    \"\"\"Apply a function to its own result once.\"\"\"\n    return fn(fn(value))"
+    },
+    {
+      "name": "heldout_code_overload",
+      "domain": "code",
+      "system": "Extract the exact overload declaration from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom typing import overload, Union\n\n@overload\ndef to_int(value: str) -> int: ...\n@overload\ndef to_int(value: float) -> int: ...\ndef to_int(value: Union[str, float]) -> int:\n    return int(value)\n```\n\nExtract the overload declaration. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "from",
+      "target_span": "def to_int(value: Union[str, float]) -> int:",
+      "passage": "from typing import overload, Union\n\n@overload\ndef to_int(value: str) -> int: ...\n@overload\ndef to_int(value: float) -> int: ...\ndef to_int(value: Union[str, float]) -> int:\n    return int(value)"
+    },
+    {
+      "name": "heldout_code_protocol",
+      "domain": "code",
+      "system": "Extract the exact protocol definition from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom typing import Protocol, runtime_checkable\n\n@runtime_checkable\nclass SupportsClose(Protocol):\n    def close(self) -> None: ...\n\ndef cleanup(resource: SupportsClose) -> None:\n    resource.close()\n```\n\nExtract the protocol definition. Output ONLY that line.",
+      "correct_token": "class",
+      "wrong_token": "from",
+      "target_span": "class SupportsClose(Protocol):",
+      "passage": "from typing import Protocol, runtime_checkable\n\n@runtime_checkable\nclass SupportsClose(Protocol):\n    def close(self) -> None: ...\n\ndef cleanup(resource: SupportsClose) -> None:\n    resource.close()"
+    },
+    {
+      "name": "heldout_code_property_def",
+      "domain": "code",
+      "system": "Extract the exact property definition from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nclass Rectangle:\n    def __init__(self, width: float, height: float) -> None:\n        self._width = width\n        self._height = height\n\n    @property\n    def area(self) -> float:\n        return self._width * self._height\n```\n\nExtract the property definition. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "class",
+      "target_span": "def area(self) -> float:",
+      "passage": "class Rectangle:\n    def __init__(self, width: float, height: float) -> None:\n        self._width = width\n        self._height = height\n\n    @property\n    def area(self) -> float:\n        return self._width * self._height"
+    },
+    {
+      "name": "heldout_code_classmethod_def",
+      "domain": "code",
+      "system": "Extract the exact classmethod signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom __future__ import annotations\n\nclass Config:\n    def __init__(self, values: dict) -> None:\n        self.values = values\n\n    @classmethod\n    def from_file(cls, path: str) -> Config:\n        with open(path) as f:\n            return cls({\"raw\": f.read()})\n```\n\nExtract the classmethod signature. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "from",
+      "target_span": "def from_file(cls, path: str) -> Config:",
+      "passage": "from __future__ import annotations\n\nclass Config:\n    def __init__(self, values: dict) -> None:\n        self.values = values\n\n    @classmethod\n    def from_file(cls, path: str) -> Config:\n        with open(path) as f:\n            return cls({\"raw\": f.read()})"
+    },
+    {
+      "name": "heldout_code_generator_def",
+      "domain": "code",
+      "system": "Extract the exact generator function signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom typing import Iterator\n\ndef chunked(items: list[int], size: int) -> Iterator[list[int]]:\n    \"\"\"Yield successive chunks of the given size from items.\"\"\"\n    for i in range(0, len(items), size):\n        yield items[i:i + size]\n```\n\nExtract the generator function signature. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "from",
+      "target_span": "def chunked(items: list[int], size: int) -> Iterator[list[int]]:",
+      "passage": "from typing import Iterator\n\ndef chunked(items: list[int], size: int) -> Iterator[list[int]]:\n    \"\"\"Yield successive chunks of the given size from items.\"\"\"\n    for i in range(0, len(items), size):\n        yield items[i:i + size]"
+    },
+    {
+      "name": "heldout_code_staticmethod_def",
+      "domain": "code",
+      "system": "Extract the exact staticmethod signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nclass Validator:\n    def __init__(self, schema: dict) -> None:\n        self.schema = schema\n\n    @staticmethod\n    def is_valid_email(s: str) -> bool:\n        return \"@\" in s and \".\" in s.split(\"@\")[-1]\n```\n\nExtract the staticmethod signature. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "class",
+      "target_span": "def is_valid_email(s: str) -> bool:",
+      "passage": "class Validator:\n    def __init__(self, schema: dict) -> None:\n        self.schema = schema\n\n    @staticmethod\n    def is_valid_email(s: str) -> bool:\n        return \"@\" in s and \".\" in s.split(\"@\")[-1]"
+    },
+    {
+      "name": "heldout_code_abstractmethod_def",
+      "domain": "code",
+      "system": "Extract the exact abstract method signature from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom abc import ABC, abstractmethod\n\nclass Storage(ABC):\n    @abstractmethod\n    def save(self, key: str, value: bytes) -> None:\n        \"\"\"Persist the given bytes under the given key.\"\"\"\n        raise NotImplementedError\n```\n\nExtract the abstract method signature. Output ONLY that line.",
+      "correct_token": "def",
+      "wrong_token": "from",
+      "target_span": "def save(self, key: str, value: bytes) -> None:",
+      "passage": "from abc import ABC, abstractmethod\n\nclass Storage(ABC):\n    @abstractmethod\n    def save(self, key: str, value: bytes) -> None:\n        \"\"\"Persist the given bytes under the given key.\"\"\"\n        raise NotImplementedError"
+    },
+    {
+      "name": "heldout_code_enum_def",
+      "domain": "code",
+      "system": "Extract the exact enum definition from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom enum import Enum, auto\n\nclass JobStatus(Enum):\n    PENDING = auto()\n    RUNNING = auto()\n    SUCCEEDED = auto()\n    FAILED = auto()\n```\n\nExtract the enum definition. Output ONLY that line.",
+      "correct_token": "class",
+      "wrong_token": "from",
+      "target_span": "class JobStatus(Enum):",
+      "passage": "from enum import Enum, auto\n\nclass JobStatus(Enum):\n    PENDING = auto()\n    RUNNING = auto()\n    SUCCEEDED = auto()\n    FAILED = auto()"
+    },
+    {
+      "name": "heldout_code_namedtuple_def",
+      "domain": "code",
+      "system": "Extract the exact namedtuple declaration from the code. Output ONLY the verbatim text, nothing else.",
+      "prompt": "Source code:\n```python\nfrom typing import NamedTuple\n\nclass Point(NamedTuple):\n    x: float\n    y: float\n    label: str = \"\"\n```\n\nExtract the namedtuple declaration. Output ONLY that line.",
+      "correct_token": "class",
+      "wrong_token": "from",
+      "target_span": "class Point(NamedTuple):",
+      "passage": "from typing import NamedTuple\n\nclass Point(NamedTuple):\n    x: float\n    y: float\n    label: str = \"\""
+    }
+  ]
+}

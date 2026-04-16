@@ -1,0 +1,590 @@
+{
+  "domain": "tool_calling",
+  "version": "1.0-bfclv3-uncal",
+  "source": {
+    "benchmark": "synthetic_bfclv3",
+    "total_probes": 40,
+    "categories": {
+      "function_name": 14,
+      "argument_format": 13,
+      "parameter_name": 13
+    }
+  },
+  "search_config": {
+    "recommended_layers": [
+      1,
+      2,
+      3,
+      4,
+      34
+    ],
+    "lambda_control": 2.0,
+    "min_iterations": 200
+  },
+  "probes": {
+    "target": [
+      {
+        "prompt": "calculate_area(",
+        "correct": "{",
+        "wrong": "1",
+        "name": "bfcl_argument_format_0000",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -12.334921300411224,
+        "base_correct_id": 90,
+        "base_wrong_id": 16
+      },
+      {
+        "prompt": "get_directions(\n  ",
+        "correct": "{",
+        "wrong": " directions",
+        "name": "bfcl_argument_format_0012",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -11.70781123638153,
+        "base_correct_id": 90,
+        "base_wrong_id": 17961
+      },
+      {
+        "prompt": "resize_image(\n  arguments=",
+        "correct": "{",
+        "wrong": "arguments",
+        "name": "bfcl_argument_format_0010",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -9.927346229553223,
+        "base_correct_id": 90,
+        "base_wrong_id": 16370
+      },
+      {
+        "prompt": "create_user(\n  ",
+        "correct": "{",
+        "wrong": " user",
+        "name": "bfcl_argument_format_0004",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -9.8309725522995,
+        "base_correct_id": 90,
+        "base_wrong_id": 1196
+      },
+      {
+        "prompt": "delete_user(request=",
+        "correct": "{",
+        "wrong": "request",
+        "name": "bfcl_argument_format_0007",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -9.49359130859375,
+        "base_correct_id": 90,
+        "base_wrong_id": 2035
+      },
+      {
+        "prompt": "get_stock_price(params=\n  ",
+        "correct": "{",
+        "wrong": " stock",
+        "name": "bfcl_argument_format_0008",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -9.425540685653687,
+        "base_correct_id": 90,
+        "base_wrong_id": 5591
+      },
+      {
+        "prompt": "send_email(arguments=",
+        "correct": "{",
+        "wrong": "arguments",
+        "name": "bfcl_argument_format_0002",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -8.90434193611145,
+        "base_correct_id": 90,
+        "base_wrong_id": 16370
+      },
+      {
+        "prompt": "upload_file(data=",
+        "correct": "{",
+        "wrong": "1",
+        "name": "bfcl_argument_format_0009",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -8.85714840888977,
+        "base_correct_id": 90,
+        "base_wrong_id": 16
+      },
+      {
+        "prompt": "schedule_meeting(args=",
+        "correct": "{",
+        "wrong": "args",
+        "name": "bfcl_argument_format_0005",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -8.459404468536377,
+        "base_correct_id": 90,
+        "base_wrong_id": 2116
+      },
+      {
+        "prompt": "get_weather(\n",
+        "correct": "{",
+        "wrong": "       ",
+        "name": "bfcl_argument_format_0001",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -7.875926494598389,
+        "base_correct_id": 90,
+        "base_wrong_id": 286
+      },
+      {
+        "prompt": "upload_file({\"path\": \"report.pdf\", \"",
+        "correct": "bucket",
+        "wrong": "type",
+        "name": "bfcl_parameter_name_0009",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -7.139546871185303,
+        "base_correct_id": 30410,
+        "base_wrong_id": 1313
+      },
+      {
+        "prompt": "schedule_meeting({\"title\": \"Standup\", \"time\": \"9am\", \"",
+        "correct": "attendees",
+        "wrong": "location",
+        "name": "bfcl_parameter_name_0005",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -7.1053619384765625,
+        "base_correct_id": 56458,
+        "base_wrong_id": 2527
+      },
+      {
+        "prompt": "translate_text(input=\n",
+        "correct": "{",
+        "wrong": "   ",
+        "name": "bfcl_argument_format_0006",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -5.318971633911133,
+        "base_correct_id": 90,
+        "base_wrong_id": 262
+      },
+      {
+        "prompt": "calculate_area({\"shape\": \"circle\", \"",
+        "correct": "dimensions",
+        "wrong": "center",
+        "name": "bfcl_parameter_name_0000",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -4.442516326904297,
+        "base_correct_id": 59239,
+        "base_wrong_id": 3057
+      },
+      {
+        "prompt": "create_invoice(input=\n",
+        "correct": "{",
+        "wrong": "           ",
+        "name": "bfcl_argument_format_0011",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -4.00616979598999,
+        "base_correct_id": 90,
+        "base_wrong_id": 310
+      },
+      {
+        "prompt": "search_products(params=\n",
+        "correct": "{",
+        "wrong": "   ",
+        "name": "bfcl_argument_format_0003",
+        "category": "argument_format",
+        "source": "synthetic_bfclv3",
+        "base_gap": -3.5536465644836426,
+        "base_correct_id": 90,
+        "base_wrong_id": 262
+      },
+      {
+        "prompt": "search_products({\"query\": \"laptop\", \"",
+        "correct": "max_results",
+        "wrong": "page",
+        "name": "bfcl_parameter_name_0003",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -3.057443618774414,
+        "base_correct_id": 2810,
+        "base_wrong_id": 2893
+      },
+      {
+        "prompt": "translate_text({\"text\": \"hello\", \"",
+        "correct": "target_lang",
+        "wrong": "text",
+        "name": "bfcl_parameter_name_0006",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -2.8821353912353516,
+        "base_correct_id": 5657,
+        "base_wrong_id": 1318
+      },
+      {
+        "prompt": "get_stock_price({\"",
+        "correct": "ticker",
+        "wrong": "stock",
+        "name": "bfcl_parameter_name_0008",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -2.7198495864868164,
+        "base_correct_id": 68345,
+        "base_wrong_id": 13479
+      },
+      {
+        "prompt": "Functions available:\n- set_reminder(message: str, time: str) -> dict\n- get_calendar(date: str) -> list\n- schedule_meeting(title: str, time: str, attendees: list[str]) -> dict\n\nUser: Remind me to call the dentist at 2pm\nCall:",
+        "correct": " set_reminder",
+        "wrong": " ",
+        "name": "bfcl_function_name_0012",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -2.5334129333496094,
+        "base_correct_id": 738,
+        "base_wrong_id": 220
+      },
+      {
+        "prompt": "set_reminder({\"message\": \"call dentist\", \"",
+        "correct": "time",
+        "wrong": "type",
+        "name": "bfcl_parameter_name_0012",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -1.8150968551635742,
+        "base_correct_id": 1678,
+        "base_wrong_id": 1313
+      },
+      {
+        "prompt": "create_user({\"name\": \"Alice\", \"",
+        "correct": "email",
+        "wrong": "age",
+        "name": "bfcl_parameter_name_0004",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -1.132486343383789,
+        "base_correct_id": 2332,
+        "base_wrong_id": 424
+      },
+      {
+        "prompt": "create_invoice({\"customer\": \"Acme\", \"items\": [], \"",
+        "correct": "total",
+        "wrong": "amount",
+        "name": "bfcl_parameter_name_0011",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -0.23513507843017578,
+        "base_correct_id": 5035,
+        "base_wrong_id": 6045
+      },
+      {
+        "prompt": "get_weather({\"",
+        "correct": "city",
+        "wrong": "name",
+        "name": "bfcl_parameter_name_0001",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": -0.02611541748046875,
+        "base_correct_id": 8926,
+        "base_wrong_id": 606
+      },
+      {
+        "prompt": "delete_user({\"",
+        "correct": "user_id",
+        "wrong": "id",
+        "name": "bfcl_parameter_name_0007",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 0.05737113952636719,
+        "base_correct_id": 872,
+        "base_wrong_id": 307
+      },
+      {
+        "prompt": "send_email({\"to\": \"alice@example.com\", \"",
+        "correct": "subject",
+        "wrong": "from",
+        "name": "bfcl_parameter_name_0002",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 1.1192445755004883,
+        "base_correct_id": 11501,
+        "base_wrong_id": 1499
+      },
+      {
+        "prompt": "Functions available:\n- get_directions(origin: str, destination: str) -> dict\n- get_weather(city: str) -> dict\n- search_products(query: str, max_results: int) -> list\n\nUser: How do I get from San Francisco to Los Angeles?\nCall:",
+        "correct": " get_directions",
+        "wrong": " `",
+        "name": "bfcl_function_name_0013",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 2.836705207824707,
+        "base_correct_id": 633,
+        "base_wrong_id": 1565
+      },
+      {
+        "prompt": "Functions available:\n- send_email(to: str, subject: str, body: str) -> bool\n- get_weather(city: str) -> dict\n- calculate_area(shape: str, dimensions: list[float]) -> float\n\nUser: Email john@example.com about the meeting tomorrow\nCall:",
+        "correct": " send_email",
+        "wrong": " email",
+        "name": "bfcl_function_name_0002",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 2.865571975708008,
+        "base_correct_id": 3624,
+        "base_wrong_id": 2551
+      },
+      {
+        "prompt": "Functions available:\n- schedule_meeting(title: str, time: str, attendees: list[str]) -> dict\n- send_email(to: str, subject: str, body: str) -> bool\n- get_calendar(date: str) -> list\n\nUser: Set up a meeting called 'Sprint Review' at 3pm with Alice and Bob\nCall:",
+        "correct": " schedule_meeting",
+        "wrong": " ",
+        "name": "bfcl_function_name_0007",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 2.970137596130371,
+        "base_correct_id": 9700,
+        "base_wrong_id": 220
+      },
+      {
+        "prompt": "Functions available:\n- create_user(name: str, email: str) -> dict\n- delete_user(user_id: int) -> bool\n- get_weather(city: str) -> dict\n\nUser: Register a new account for Bob with bob@mail.com\nCall:",
+        "correct": " create_user",
+        "wrong": " register",
+        "name": "bfcl_function_name_0003",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 3.0976858139038086,
+        "base_correct_id": 1855,
+        "base_wrong_id": 4161
+      },
+      {
+        "prompt": "Functions available:\n- get_stock_price(ticker: str) -> float\n- get_weather(city: str) -> dict\n- search_products(query: str, max_results: int) -> list\n\nUser: What is AAPL trading at right now?\nCall:",
+        "correct": " get_stock_price",
+        "wrong": " stock",
+        "name": "bfcl_function_name_0008",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 3.394747734069824,
+        "base_correct_id": 633,
+        "base_wrong_id": 5591
+      },
+      {
+        "prompt": "Functions available:\n- search_products(query: str, max_results: int) -> list\n- get_weather(city: str) -> dict\n- create_user(name: str, email: str) -> dict\n\nUser: Find me running shoes under $100\nCall:",
+        "correct": " search_products",
+        "wrong": " `",
+        "name": "bfcl_function_name_0001",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 3.549898147583008,
+        "base_correct_id": 2711,
+        "base_wrong_id": 1565
+      },
+      {
+        "prompt": "Functions available:\n- delete_user(user_id: int) -> bool\n- get_user(user_id: int) -> dict\n- create_user(name: str, email: str) -> dict\n\nUser: Remove user 42 from the system\nCall:",
+        "correct": " delete_user",
+        "wrong": " user",
+        "name": "bfcl_function_name_0006",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 3.866766929626465,
+        "base_correct_id": 3698,
+        "base_wrong_id": 1196
+      },
+      {
+        "prompt": "Functions available:\n- get_weather(city: str) -> dict\n- translate_text(text: str, target_lang: str) -> str\n- search_products(query: str, max_results: int) -> list\n\nUser: What's the weather like in Tokyo?\nCall:",
+        "correct": " get_weather",
+        "wrong": " `",
+        "name": "bfcl_function_name_0004",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.142908096313477,
+        "base_correct_id": 633,
+        "base_wrong_id": 1565
+      },
+      {
+        "prompt": "Functions available:\n- resize_image(path: str, width: int, height: int) -> str\n- convert_image(path: str, format: str) -> str\n- get_weather(city: str) -> dict\n\nUser: Make photo.jpg 800x600 pixels\nCall:",
+        "correct": " resize_image",
+        "wrong": " image",
+        "name": "bfcl_function_name_0010",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.256949424743652,
+        "base_correct_id": 20925,
+        "base_wrong_id": 2168
+      },
+      {
+        "prompt": "Functions available:\n- create_invoice(customer: str, items: list, total: float) -> dict\n- send_email(to: str, subject: str, body: str) -> bool\n- get_customer(customer_id: int) -> dict\n\nUser: Generate an invoice for Acme Corp for $1500\nCall:",
+        "correct": " create_invoice",
+        "wrong": " send",
+        "name": "bfcl_function_name_0011",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.330814361572266,
+        "base_correct_id": 1855,
+        "base_wrong_id": 3624
+      },
+      {
+        "prompt": "Functions available:\n- calculate_area(shape: str, dimensions: list[float]) -> float\n- get_weather(city: str) -> dict\n- send_email(to: str, subject: str, body: str) -> bool\n\nUser: What is the area of a circle with radius 5?\nCall:",
+        "correct": " calculate_area",
+        "wrong": " ",
+        "name": "bfcl_function_name_0000",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.54234504699707,
+        "base_correct_id": 11047,
+        "base_wrong_id": 220
+      },
+      {
+        "prompt": "Functions available:\n- translate_text(text: str, target_lang: str) -> str\n- search_products(query: str, max_results: int) -> list\n- send_email(to: str, subject: str, body: str) -> bool\n\nUser: Translate 'hello world' to French\nCall:",
+        "correct": " translate_text",
+        "wrong": " text",
+        "name": "bfcl_function_name_0005",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.6424970626831055,
+        "base_correct_id": 14683,
+        "base_wrong_id": 1467
+      },
+      {
+        "prompt": "Functions available:\n- upload_file(path: str, bucket: str) -> str\n- download_file(url: str, dest: str) -> bool\n- delete_file(path: str) -> bool\n- list_files(bucket: str) -> list\n\nUser: Upload report.pdf to the documents bucket\nCall:",
+        "correct": " upload_file",
+        "wrong": " Upload",
+        "name": "bfcl_function_name_0009",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.883394241333008,
+        "base_correct_id": 8135,
+        "base_wrong_id": 24996
+      },
+      {
+        "prompt": "resize_image({\"path\": \"photo.jpg\", \"width\": 800, \"",
+        "correct": "height",
+        "wrong": "width",
+        "name": "bfcl_parameter_name_0010",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 7.4569196701049805,
+        "base_correct_id": 2563,
+        "base_wrong_id": 3098
+      }
+    ],
+    "promoted_controls": [
+      {
+        "prompt": "resize_image({\"path\": \"photo.jpg\", \"width\": 800, \"",
+        "correct": "height",
+        "wrong": "width",
+        "name": "bfcl_parameter_name_0010",
+        "category": "parameter_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 7.4569196701049805,
+        "base_correct_id": 2563,
+        "base_wrong_id": 3098
+      },
+      {
+        "prompt": "Functions available:\n- upload_file(path: str, bucket: str) -> str\n- download_file(url: str, dest: str) -> bool\n- delete_file(path: str) -> bool\n- list_files(bucket: str) -> list\n\nUser: Upload report.pdf to the documents bucket\nCall:",
+        "correct": " upload_file",
+        "wrong": " Upload",
+        "name": "bfcl_function_name_0009",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.883394241333008,
+        "base_correct_id": 8135,
+        "base_wrong_id": 24996
+      },
+      {
+        "prompt": "Functions available:\n- translate_text(text: str, target_lang: str) -> str\n- search_products(query: str, max_results: int) -> list\n- send_email(to: str, subject: str, body: str) -> bool\n\nUser: Translate 'hello world' to French\nCall:",
+        "correct": " translate_text",
+        "wrong": " text",
+        "name": "bfcl_function_name_0005",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.6424970626831055,
+        "base_correct_id": 14683,
+        "base_wrong_id": 1467
+      },
+      {
+        "prompt": "Functions available:\n- calculate_area(shape: str, dimensions: list[float]) -> float\n- get_weather(city: str) -> dict\n- send_email(to: str, subject: str, body: str) -> bool\n\nUser: What is the area of a circle with radius 5?\nCall:",
+        "correct": " calculate_area",
+        "wrong": " ",
+        "name": "bfcl_function_name_0000",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.54234504699707,
+        "base_correct_id": 11047,
+        "base_wrong_id": 220
+      },
+      {
+        "prompt": "Functions available:\n- create_invoice(customer: str, items: list, total: float) -> dict\n- send_email(to: str, subject: str, body: str) -> bool\n- get_customer(customer_id: int) -> dict\n\nUser: Generate an invoice for Acme Corp for $1500\nCall:",
+        "correct": " create_invoice",
+        "wrong": " send",
+        "name": "bfcl_function_name_0011",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.330814361572266,
+        "base_correct_id": 1855,
+        "base_wrong_id": 3624
+      },
+      {
+        "prompt": "Functions available:\n- resize_image(path: str, width: int, height: int) -> str\n- convert_image(path: str, format: str) -> str\n- get_weather(city: str) -> dict\n\nUser: Make photo.jpg 800x600 pixels\nCall:",
+        "correct": " resize_image",
+        "wrong": " image",
+        "name": "bfcl_function_name_0010",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.256949424743652,
+        "base_correct_id": 20925,
+        "base_wrong_id": 2168
+      },
+      {
+        "prompt": "Functions available:\n- get_weather(city: str) -> dict\n- translate_text(text: str, target_lang: str) -> str\n- search_products(query: str, max_results: int) -> list\n\nUser: What's the weather like in Tokyo?\nCall:",
+        "correct": " get_weather",
+        "wrong": " `",
+        "name": "bfcl_function_name_0004",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 4.142908096313477,
+        "base_correct_id": 633,
+        "base_wrong_id": 1565
+      },
+      {
+        "prompt": "Functions available:\n- delete_user(user_id: int) -> bool\n- get_user(user_id: int) -> dict\n- create_user(name: str, email: str) -> dict\n\nUser: Remove user 42 from the system\nCall:",
+        "correct": " delete_user",
+        "wrong": " user",
+        "name": "bfcl_function_name_0006",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 3.866766929626465,
+        "base_correct_id": 3698,
+        "base_wrong_id": 1196
+      },
+      {
+        "prompt": "Functions available:\n- search_products(query: str, max_results: int) -> list\n- get_weather(city: str) -> dict\n- create_user(name: str, email: str) -> dict\n\nUser: Find me running shoes under $100\nCall:",
+        "correct": " search_products",
+        "wrong": " `",
+        "name": "bfcl_function_name_0001",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 3.549898147583008,
+        "base_correct_id": 2711,
+        "base_wrong_id": 1565
+      },
+      {
+        "prompt": "Functions available:\n- get_stock_price(ticker: str) -> float\n- get_weather(city: str) -> dict\n- search_products(query: str, max_results: int) -> list\n\nUser: What is AAPL trading at right now?\nCall:",
+        "correct": " get_stock_price",
+        "wrong": " stock",
+        "name": "bfcl_function_name_0008",
+        "category": "function_name",
+        "source": "synthetic_bfclv3",
+        "base_gap": 3.394747734069824,
+        "base_correct_id": 633,
+        "base_wrong_id": 5591
+      }
+    ]
+  },
+  "_uncalibrated": false,
+  "_calibrated_at": "2026-04-12T14:17:55Z",
+  "_calibration": {
+    "source_probes": 40,
+    "valid_probes": 40,
+    "base_failures": 24,
+    "base_corrects": 16,
+    "target_count": 40,
+    "control_count": 10
+  }
+}
