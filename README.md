@@ -6,7 +6,37 @@
 
 Gradient-free adaptation of frozen 1-bit language models via discrete search over binary weight groups. 2,252 patches across 5 task domains on PrismML's Bonsai 8B, applied via bitwise XOR in microseconds, preserving the native 1-bit inference path. 17.2 A100 GPU-hours total compute.
 
-## Results
+## What this work finds
+
+True 1-bit language models store each weight as a single sign bit with a shared scale factor per group. We find that the binary weight space of these models contains what we call navigable degeneracy: 27–47% of random sign-group perturbations in MLP layers improve task-specific logit gaps while preserving general performance. A null-baseline comparison confirms this is a property of the trained model's structure rather than an artifact of the fitness criterion (46.8% acceptance on the trained model versus 16.8% on randomized weights).
+
+However, navigating this landscape is subtler than acceptance rates suggest. Of 2,252 accepted flips under an average-gap fitness function, 99.96% produce no change in any probe's argmax prediction: per-flip effect sizes are four orders of magnitude below typical decision margins. At the benchmark level, we do not detect a statistically significant effect on any of the four benchmarks we evaluated. The fitness function rewards movement that is too small to cross decision boundaries, a failure mode we call fitness dilution.
+
+A boundary-concentrated fitness function, inspired by focal loss, resolves this at the probe level by concentrating search pressure on probes nearest the decision boundary. The focused variant crosses both targeted probes and produces observable generation changes on those two specific prompts under a 13 KB patch. A held-out evaluation (below) finds that these changes do not generalize beyond the training-target domains, consistent with memorization of the optimized mappings rather than installation of a transferable capability.
+
+## Held-out verbatim evaluation (1.7B)
+
+The demo notebook applies a focused patch trained on two verbatim extraction prompts (legal clause and medical dosage). To test whether the patch installs a general "extract rather than copy" capability or memorizes two specific input-output mappings, we evaluated on 100 held-out probes (20 per domain) that follow the same structural template but use different content.
+
+|  | Patched PASS | Patched COPY | Patched PARTIAL |
+|---|---|---|---|
+| **Base PASS** | 19 | 1 | 0 |
+| **Base COPY** | 6 | 72 | 0 |
+| **Base PARTIAL** | 0 | 0 | 2 |
+
+COPY→PASS conversion rate: 6/78 = 7.7% (Wilson 95% CI [3.6%, 15.8%]), below the pre-registered 20% threshold for generalization. Per-domain breakdown:
+
+| Domain | Base COPY | Converted | Rate |
+|--------|-----------|-----------|------|
+| Legal | 15 | 3 | 20% |
+| Medical | 16 | 3 | 19% |
+| API | 14 | 0 | 0% |
+| Code | 14 | 0 | 0% |
+| Logs | 19 | 0 | 0% |
+
+All six conversions are in the two domains that correspond to the two training targets (legal clause and medical dosage). Zero conversions in the other three domains. One base-PASS probe reverted to COPY under the patch (5% breakage on base-PASS probes). The result is consistent with memorization of the two optimized mappings with within-domain spillover rather than a task-general capability shift.
+
+## Search results (8B)
 
 Weight-XOR search across five task domains on Bonsai 8B. Each domain uses a different (λ, control set) configuration; per-domain rates are conditioned on these post-hoc choices and on the sequential pipeline order (editing → instruction → tool calling → math → coding). See the paper §6 preamble and §6.5 footnote for details.
 
@@ -20,7 +50,9 @@ Weight-XOR search across five task domains on Bonsai 8B. Each domain uses a diff
 
 A null-baseline comparison on Bonsai 1.7B confirms these rates reflect trained-model structure rather than fitness-criterion symmetry: 46.8% acceptance on the trained model versus 16.8% on a randomized model (30pp gap, non-overlapping 95% CIs).
 
-**Benchmark evaluation** (Bonsai 8B, base vs. patched, within-harness comparison):
+## Benchmark evaluation (8B)
+
+Base vs. patched, within-harness comparison (same prompts, same server build, same scoring):
 
 | Benchmark | Base | Patched | Δ | n |
 |-----------|------|---------|---|---|
