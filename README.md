@@ -3,6 +3,7 @@
 **Navigable Degeneracy in the Roots of 1-Bit Language Models**
 
 [![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/11ozwjKPSCNewuoR9w9ziHs1oJUpy0d8U)
+&ensp;[**Paper (PDF)**](paper/neagari-paper.pdf)
 
 Gradient-free adaptation of frozen 1-bit language models via discrete search over binary weight groups. 2,252 patches across 5 task domains on PrismML's Bonsai 8B, applied via bitwise XOR in microseconds, preserving the native 1-bit inference path. 17.2 A100 GPU-hours total compute.
 
@@ -127,12 +128,6 @@ neagari/
     ├── calibrated/                  # Calibrated probe sets (4 domains)
     └── probes_verbatim_heldout.json # 100 held-out verbatim probes
 ```
-
-## Paper
-
-[Neagari: Navigable Degeneracy in the Roots of 1-Bit Language Models](paper/neagari-paper.pdf) (April 2026)
-
-Steven Benjamin · `sl@blindloom.ai`
 
 ## Citation
 
