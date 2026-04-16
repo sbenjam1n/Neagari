@@ -6,7 +6,7 @@
 &ensp;[**Paper (PDF)**](paper/neagari-paper.pdf)
 &ensp;[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19615054.svg)](https://doi.org/10.5281/zenodo.19615054)
 
-Gradient-free adaptation of frozen 1-bit language models via discrete search over binary weight groups. 2,252 patches across 5 task domains on PrismML's Bonsai 8B, applied via bitwise XOR in microseconds, preserving the native 1-bit inference path. 17.2 A100 GPU-hours total compute.
+Gradient-free adaptation of frozen 1-bit language models via discrete search over binary weight groups.
 
 ## What this work finds
 
