@@ -2,11 +2,15 @@
 
 **Navigable Degeneracy in the Roots of 1-Bit Language Models**
 
-[![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/11ozwjKPSCNewuoR9w9ziHs1oJUpy0d8U)
-&ensp;[**Paper (PDF)**](paper/neagari-paper.pdf)
-&ensp;[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19615054.svg)](https://doi.org/10.5281/zenodo.19615054)
-
 Gradient-free adaptation of frozen 1-bit language models via discrete search over binary weight groups.
+
+[**Paper (PDF)**](paper/neagari-paper.pdf)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19630592.svg)](https://doi.org/10.5281/zenodo.19630592)
+
+This Colab notebook demonstrates a 13 KB patch on Bonsai 1.7B that corrects two verbatim text extraction failures. You can run it for free on T4 after waiting for Bonsai to download. The patch was found using a novel targeted search that concentrates on probes nearest the decision boundary (focal-loss-style weighting).
+
+[![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/11ozwjKPSCNewuoR9w9ziHs1oJUpy0d8U)
 
 ## What this work finds
 
