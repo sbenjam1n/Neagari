@@ -99,7 +99,41 @@ python src/xor_search.py \
     --probes your_probes.json \
     --iterations 500 \
     --lambda 1.5
+
+# With per-flip per-probe delta logging (for diffusion analysis):
+python src/xor_search.py \
+    --model Bonsai-8B-v1.gguf \
+    --probes your_probes.json \
+    --iterations 500 \
+    --log-flip-detail
 ```
+
+## Vision Experiments (Binary ResNet-18 / CIFAR-10)
+
+The search framework is architecture-independent. `neagari_vision.py` applies the same XOR search to binary neural networks for image classification, using the same fitness functions (average, crossing, borderline, focused) and the same probe structure (logit gap = correct class logit minus top wrong class logit).
+
+```bash
+pip install torch torchvision numpy
+
+# Train a binary ResNet-18 on CIFAR-10 (~1h on T4)
+python src/neagari_vision.py --train --epochs 100
+
+# Run XOR search with per-flip delta logging
+python src/neagari_vision.py --search --fitness borderline --iterations 5000 --log-deltas
+
+# Run focused (lexicographic) search
+python src/neagari_vision.py --search --fitness focused --iterations 10000 --log-deltas
+
+# Run on corruption-specific probes (CIFAR-10-C, Hendrycks & Dietterich 2019)
+# Target probes: corrupted images the model misclassifies
+# Control probes: clean images the model classifies correctly
+python src/neagari_vision.py --search --fitness borderline --corruption fog --severity 3 --log-deltas
+
+# Evaluate on clean + multiple corruption types (cross-corruption interference)
+python src/neagari_vision.py --eval --eval-corruptions
+```
+
+The `--log-deltas` flag records per-probe gap deltas for every accepted flip to `per_flip_deltas.jsonl`. Each entry contains the per-probe mean delta (M) and variance (V) needed to parameterize the Fokker-Planck equation for the logit-gap diffusion process and compute Kimura fixation probabilities for each probe.
 
 ## Notebooks
 
@@ -123,14 +157,16 @@ neagari/
 │   ├── boundary_crossing_audit.ipynb
 │   └── bankai_verification_standalone.ipynb
 ├── src/
-│   ├── xor_search.py                # Core search engine
+│   ├── xor_search.py                # Core search engine (LLM)
+│   ├── neagari_vision.py            # Vision search engine (Binary ResNet-18 / CIFAR-10)
 │   ├── apply_patches_gguf.py        # Patch application utility
-│   └── eval_heldout_verbatim.py     # Held-out verbatim evaluation
+│   ├── eval_heldout_verbatim.py     # Held-out verbatim evaluation
+│   └── preflight_vision.py          # Pre-run validation for vision experiments
 ├── patches/
 │   ├── v2_patches/                  # Weight-XOR patches (5 domains)
 │   └── v3_patches/                  # Scale-mantissa patches (5 domains)
 └── probes/
-    ├── calibrated/                  # Calibrated probe sets (4 domains)
+    ├── calibrated/                  # Calibrated probe sets (5 domains)
     └── probes_verbatim_heldout.json # 100 held-out verbatim probes
 ```
 
