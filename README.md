@@ -108,33 +108,6 @@ python src/xor_search.py \
     --log-flip-detail
 ```
 
-## Vision Experiments (Binary ResNet-18 / CIFAR-10)
-
-The search framework is architecture-independent. `neagari_vision.py` applies the same XOR search to binary neural networks for image classification, using the same fitness functions (average, crossing, borderline, focused) and the same probe structure (logit gap = correct class logit minus top wrong class logit).
-
-```bash
-pip install torch torchvision numpy
-
-# Train a binary ResNet-18 on CIFAR-10 (~1h on T4)
-python src/neagari_vision.py --train --epochs 100
-
-# Run XOR search with per-flip delta logging
-python src/neagari_vision.py --search --fitness borderline --iterations 5000 --log-deltas
-
-# Run focused (lexicographic) search
-python src/neagari_vision.py --search --fitness focused --iterations 10000 --log-deltas
-
-# Run on corruption-specific probes (CIFAR-10-C, Hendrycks & Dietterich 2019)
-# Target probes: corrupted images the model misclassifies
-# Control probes: clean images the model classifies correctly
-python src/neagari_vision.py --search --fitness borderline --corruption fog --severity 3 --log-deltas
-
-# Evaluate on clean + multiple corruption types (cross-corruption interference)
-python src/neagari_vision.py --eval --eval-corruptions
-```
-
-The `--log-deltas` flag records per-probe gap deltas for every accepted flip to `per_flip_deltas.jsonl`. Each entry contains the per-probe mean delta (M) and variance (V) needed to parameterize the Fokker-Planck equation for the logit-gap diffusion process and compute Kimura fixation probabilities for each probe.
-
 ## Notebooks
 
 | Notebook | Description | Colab |
